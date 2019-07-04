@@ -3,6 +3,8 @@
   flex-flow: row;
   max-width: 100vw;
   flex-wrap: wrap;
+
+  justify-content: center;
 }
 
 .descriptor {
