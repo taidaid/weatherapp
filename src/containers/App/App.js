@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./App.css";
 import Forecast from "../Forecast/Forecast";
 import Navbar from "../../components/Navbar/Navbar";
-import Location from "../../components/Location";
+import Location from "../../components/Location/Location";
 
 function App() {
   const authenticate = () => {
@@ -28,9 +28,11 @@ function App() {
       <header className="App-header">
         <Navbar />
       </header>
-      {/* This component provides the input for findinga location's forecast
+      {/* Provides the input for finding a location's forecast
        */}
       <Location />
+      {/* Displays the forecast results for the given location
+       */}
       <Forecast />
     </div>
   );

@@ -13,9 +13,9 @@ const Forecast = () => {
   };
   setDefaultForecast();
   return (
-    <div>
+    <div className="forecast">
       <Alerts forecast={forecast} />
-      <Currently />
+      <Currently forecast={forecast} />
     </div>
   );
 };
