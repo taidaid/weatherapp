@@ -48,13 +48,13 @@ body {
 	-webkit-animation: fadein 436ms;
 	-moz-animation: fadein 436ms;
 	animation: fadein 436ms;
-	height: 98%;
+	height: 100%;
 }
 
 .loading-logo {
 	animation: loading-logo-spin infinite 5s linear;
 	width: auto;
-	height: 150px;
+	height: 40vh;
 }
 
 @keyframes loading-logo-spin {
