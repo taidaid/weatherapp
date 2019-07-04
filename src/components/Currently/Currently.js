@@ -1,17 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+import "./Currently.css";
 
-const Currently = () => {
+const Currently = ({ forecast }) => {
+  const [currentlyExpand, setCurrentlyExpand] = useState(false);
+  const getCurrentlyAsArray = () => {
+    const currently = Object.keys(forecast.currently).map(function(key) {
+      return [`${key}: `, forecast.currently[key]];
+    });
+
+    return currently;
+  };
+  const currentlyDescription = getCurrentlyAsArray();
   return (
-    <div>
-      <h3>Currently</h3>
-      <div>
-        "time": 1509993277, "summary": "Drizzle", "icon": "rain",
-        "nearestStormDistance": 0, "precipIntensity": 0.0089,
-        "precipIntensityError": 0.0046, "precipProbability": 0.9, "precipType":
-        "rain", "temperature": 66.1, "apparentTemperature": 66.31, "dewPoint":
-        60.77, "humidity": 0.83, "pressure": 1010.34, "windSpeed": 5.59,
-        "windGust": 12.03, "windBearing": 246, "cloudCover": 0.7, "uvIndex": 1,
-        "visibility": 9.84, "ozone": 267.44
+    <div
+      className="currently"
+      onClick={() => setCurrentlyExpand(!currentlyExpand)}
+    >
+      <h3 id="currently-section-title">
+        {currentlyExpand ? "-" : "+"}Currently
+      </h3>
+      <div className="currently-description">
+        {currentlyExpand
+          ? currentlyDescription.map(descriptor => (
+              <h5 className="descriptor">{descriptor}</h5>
+            ))
+          : ""}
       </div>
     </div>
   );
