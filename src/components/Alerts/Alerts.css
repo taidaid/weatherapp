@@ -3,12 +3,22 @@
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+}
+
+#alerts-section-title {
+  margin-bottom: 0;
+}
+#alerts-title {
+  margin-bottom: 0;
 }
 
 .scroll-left {
   height: 50px;
   width: 80vw;
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   position: relative;
   background: lightgray;
   color: #262626;
@@ -26,17 +36,18 @@
   -webkit-transform: translateX(100%);
   transform: translateX(100%);
   /* Apply animation to this element */
-  -moz-animation: scroll-left 30s linear infinite;
-  -webkit-animation: scroll-left 30s linear infinite;
-  animation: scroll-left 30s linear infinite;
+  -moz-animation: scroll-left 90s linear infinite;
+  -webkit-animation: scroll-left 90s linear infinite;
+  animation: scroll-left 90s linear infinite;
 }
 /* Move it (define the animation) */
+/* 100% {transform: translateX(-1000%)} to account for long alerts*/
 @-moz-keyframes scroll-left {
   0% {
     -moz-transform: translateX(100%);
   }
   100% {
-    -moz-transform: translateX(-100%);
+    -moz-transform: translateX(-1000%);
   }
 }
 @-webkit-keyframes scroll-left {
@@ -44,7 +55,7 @@
     -webkit-transform: translateX(100%);
   }
   100% {
-    -webkit-transform: translateX(-100%);
+    -webkit-transform: translateX(-1000%);
   }
 }
 @keyframes scroll-left {
@@ -54,8 +65,8 @@
     transform: translateX(100%);
   }
   100% {
-    -moz-transform: translateX(-100%); /* Browser bug fix */
-    -webkit-transform: translateX(-100%); /* Browser bug fix */
-    transform: translateX(-100%);
+    -moz-transform: translateX(-1000%); /* Browser bug fix */
+    -webkit-transform: translateX(-1000%); /* Browser bug fix */
+    transform: translateX(-1000%);
   }
 }
