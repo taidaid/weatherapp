@@ -7,21 +7,20 @@ const Alerts = ({ forecast }) => {
   const getAlerts = () => {
     return forecast.alerts;
   };
-
-  getAlerts();
+  const description = getAlerts()[0].description;
   return (
     <div className="alerts" onClick={() => setAlertsExpand(!alertsExpand)}>
       <h3 id="alerts-section-title">
         {alertsExpand ? "-" : "+"}
         Alerts
       </h3>
-      <div className="scroll-left">
+      <div className="alerts-scroll scroll-left">
         <p>{getAlerts()[0].description}</p>
       </div>
-      <p>{alertsExpand ? getAlerts()[0].description : ""}</p>
-
+      <p id="alerts-description">{alertsExpand ? description : ""}</p>
+      {/*not displaying correctly*/}
       {getAlerts().forEach(alert => {
-        return <h5 id="alerts-title">{alert.title}</h5>;
+        return <h5 className="alerts-title">{alert.title}</h5>;
       })}
       {/* <h5 id="alerts-title">{getAlerts()[0].title}</h5> */}
     </div>

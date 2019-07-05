@@ -1,0 +1,14 @@
+.currently-description {
+  display: flex;
+  flex-flow: row;
+  max-width: 100vw;
+  flex-wrap: wrap;
+
+  justify-content: center;
+}
+
+.descriptor {
+  padding: 5px 10px;
+  border: 1px gray solid;
+  margin: 5px;
+}
