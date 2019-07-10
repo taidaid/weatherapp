@@ -7,7 +7,7 @@ const Currently = ({ forecast }) => {
     const currently = Object.keys(forecast.currently).map(function(key) {
       return [`${key}: `, forecast.currently[key]];
     });
-
+    console.log(currently);
     return currently;
   };
   const currentlyDescription = getCurrentlyAsArray();
@@ -20,6 +20,7 @@ const Currently = ({ forecast }) => {
         {currentlyExpand ? "-" : "+"}Currently
       </h3>
       <div className="currently-description">
+        {console.log(currentlyDescription)}
         {currentlyExpand
           ? currentlyDescription.map(descriptor => (
               <h5 className="descriptor">{descriptor}</h5>
