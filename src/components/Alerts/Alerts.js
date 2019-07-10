@@ -3,7 +3,7 @@ import "./Alerts.css";
 
 const Alerts = ({ forecast }) => {
   const [alertsExpand, setAlertsExpand] = useState(false);
-  console.log("alerts", forecast);
+  // console.log("alerts", forecast);
 
   if (forecast.alerts) {
     const description = forecast.alerts[0].description

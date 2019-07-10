@@ -7,16 +7,18 @@ import Location from "../../components/Location/Location";
 // import sampleForecast from "../../assets/sample.json";
 
 function App() {
-  const [location, setLocation] = useState("42.3601,-71.0589");
+  const [location, setLocation] = useState(["42.3601", "-71.0589"]);
   const [forecast, setForecast] = useState({});
   DarkSkyApi.apiKey = "feda928cd49f3fb981c77fc4936451dc";
+  // console.log(forecast.keys);
 
-  // const setDefaultForecast = (defaultForecast = {}) => {
-  //   if (Object.keys(forecast).length === 0 && forecast.constructor === Object) {
-  //     setForecast(defaultForecast);
-  //   }
-  // };
-  // setDefaultForecast();
+  const setDefaultForecast = () => {
+    DarkSkyApi.loadItAll().then(result => {
+      console.log("default", result);
+      setForecast(result);
+    });
+  };
+  if (forecast && Object.keys(forecast).length === 0) setDefaultForecast();
 
   const authenticate = () => {
     return new Promise(resolve => setTimeout(resolve, 500));
@@ -42,19 +44,14 @@ function App() {
 
   const handleChange = newLocationInput => {
     console.log("newLocationInput", newLocationInput);
-    setLocation(newLocationInput);
+    setLocation(newLocationInput.split(","));
   };
 
-  const handleSubmit = () => {
-    console.log(location);
-    const [latitude, longitude] = location.split(",");
-    console.log(latitude, longitude);
-    const position = {
-      latitude: latitude,
-      longitude: longitude,
-    };
-    DarkSkyApi.loadCurrent(position).then(result => {
-      console.log(result);
+  const newLocation = () => {
+    // console.log(location);
+
+    DarkSkyApi.loadItAll(location).then(result => {
+      console.log("new location", result);
       setForecast(result);
     });
   };
@@ -70,7 +67,7 @@ function App() {
         <Location
           location={location}
           handleChange={handleChange}
-          handleSubmit={handleSubmit}
+          newLocation={newLocation}
         />
         {/* Displays the forecast results for the given location
          */}
