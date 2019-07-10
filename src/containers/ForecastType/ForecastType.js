@@ -3,12 +3,18 @@ import "./ForecastType.css";
 
 const ForecastType = ({ forecast, forecastType }) => {
   const [forecastExpand, setForecastExpand] = useState(false);
+  // console.log("forecastType keys", Object.keys(forecast));
   const getForecastAsArray = () => {
-    let forecastTypeArray = [];
-    forecastTypeArray = Object.keys(forecast[forecastType]).map(function(key) {
-      return [`${key}: `, forecast[forecastType][key]];
-    });
-    return forecastTypeArray;
+    // console.log(forecast);
+    if (Object.keys(forecast).length !== 0) {
+      const forecastTypeArray = Object.keys(forecast).map(function(key) {
+        return [`${key}: `, forecast[key]];
+      });
+      console.log("forecastTypeArray", forecastTypeArray);
+      return forecastTypeArray;
+    } else {
+      return [];
+    }
   };
   const forecastDescription = getForecastAsArray();
   const forecastTitle =

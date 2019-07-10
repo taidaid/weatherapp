@@ -1,15 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Location.css";
 import sampleForecast from "../../assets/sample.json";
 
-const Location = () => {
-  const [location, setLocation] = useState("42.3601,-71.0589");
-
-  const handleChange = newLocationInput => {
-    setLocation(newLocationInput);
-  };
-
-  const handleSubmit = () => {};
+const Location = ({ location, handleChange, handleSubmit }) => {
   return (
     <div className="location">
       <div className="location-name">
@@ -21,9 +14,9 @@ const Location = () => {
           style={{ textAlign: "center" }}
           type="text"
           value={location}
-          onChange={handleChange}
-          onSubmit={handleSubmit}
+          onChange={e => handleChange(e.target.value)}
         />
+        <button onClick={handleSubmit}>Forecast</button>
       </div>
     </div>
   );
