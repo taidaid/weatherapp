@@ -14,7 +14,7 @@ const Location = ({ location, handleChange, newLocation }) => {
         <input
           style={{ textAlign: "center" }}
           type="text"
-          value={location}
+          value={JSON.stringify(location)}
           onChange={e => handleChange(e.target.value)}
         />
         <button onClick={e => handleSubmit(e)}>Forecast</button>

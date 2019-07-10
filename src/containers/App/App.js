@@ -7,7 +7,7 @@ import Location from "../../components/Location/Location";
 // import sampleForecast from "../../assets/sample.json";
 
 function App() {
-  const [location, setLocation] = useState(["42.3601", "-71.0589"]);
+  const [location, setLocation] = useState({});
   const [forecast, setForecast] = useState({});
   DarkSkyApi.apiKey = "feda928cd49f3fb981c77fc4936451dc";
   // console.log(forecast.keys);
@@ -16,6 +16,7 @@ function App() {
     DarkSkyApi.loadItAll().then(result => {
       console.log("default", result);
       setForecast(result);
+      setLocation([result.latitude, result.longitude]);
     });
   };
   if (forecast && Object.keys(forecast).length === 0) setDefaultForecast();
@@ -43,13 +44,19 @@ function App() {
   // };
 
   const handleChange = newLocationInput => {
-    console.log("newLocationInput", newLocationInput);
-    setLocation(newLocationInput.split(","));
+    const latitude = newLocationInput.slice(0, newLocationInput.indexOf(","));
+    const longitude = newLocationInput.slice(
+      newLocationInput.indexOf(",") + 1,
+      newLocationInput.length
+    );
+    // const coords = { latitude, longitude };
+    console.log("newLocationInput", latitude, longitude);
+    setLocation({ latitude, longitude });
   };
 
   const newLocation = () => {
     // console.log(location);
-
+    console.log("new coords", location);
     DarkSkyApi.loadItAll(location).then(result => {
       console.log("new location", result);
       setForecast(result);

@@ -18,8 +18,8 @@ const Forecast = ({ forecast }) => {
         {Object.keys(forecast).length > 0 ? (
           <div>
             <Currently forecast={forecast.currently} forecastType="currently" />
-            <ForecastType forecast={forecast.daily} forecastType="daily" />
-            <ForecastType forecast={forecast.hourly} forecastType="hourly" />
+            {/* <ForecastType forecast={forecast.daily} forecastType="daily" />
+            <ForecastType forecast={forecast.hourly} forecastType="hourly" /> */}
           </div>
         ) : null}
 
