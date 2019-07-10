@@ -1,3 +1,5 @@
+This project was created as a demo for Clockwork using Create-React-App, Material Kit Pro React
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
