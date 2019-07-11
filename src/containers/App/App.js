@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import DarkSkyApi from "dark-sky-api";
 import "./App.css";
 import Forecast from "../Forecast/Forecast";
+
 import Navbar from "../../components/Navbar/Navbar";
+
+//Provides the input for finding a location's forecast
 import Location from "../../components/Location/Location";
-// import sampleForecast from "../../assets/sample.json";
 
 function App() {
   const [latitude, setLatitude] = useState(0);
@@ -44,10 +46,6 @@ function App() {
     });
   }, []);
 
-  // const checkStatus = status => {
-  //   if (status > 400) return "not found";
-  // };
-
   //set a new latitude state from Location component input
   const handleLatitudeChange = newLatitude => {
     setLatitude(newLatitude);
@@ -57,24 +55,10 @@ function App() {
     setLongitude(newLongitude);
   };
 
-  // const handleChange = newLocationInput => {
-  //   const latitude = newLocationInput.slice(0, newLocationInput.indexOf(","));
-  //   const longitude = newLocationInput.slice(
-  //     newLocationInput.indexOf(",") + 1,
-  //     newLocationInput.length
-  //   );
-  //   // const coords = { latitude, longitude };
-  //   console.log("newLocationInput", latitude, longitude);
-  //   setLatitude(result.latitude);
-  //   setLongitude(result.longitude);
-  // };
-
   //set a new forecast state using location state
   const newLocationForecast = () => {
-    // console.log(location);
     console.log("new coords", latitude, longitude);
-    // const latitudeNumber = parseInt(latitude);
-    // const longitudeNumber = parseInt(longitude);
+
     DarkSkyApi.loadItAll(null, {
       latitude: latitude,
       longitude: longitude,
@@ -89,8 +73,7 @@ function App() {
       <header className="App-header">
         <Navbar />
       </header>
-      {/* Provides the input for finding a location's forecast
-       */}
+
       <div className="App-body">
         <Location
           latitude={latitude}
