@@ -1,14 +1,22 @@
-#daily-forecasts {
+.daily-forecasts {
   display: flex;
   flex-flow: row;
   flex-wrap: wrap;
   justify-content: center;
+  transition: flex 5s ease-out;
 }
 
 .daily-description {
   border: 1px solid gray;
   margin: 5px;
   width: 25%;
+}
+
+.day-precip-chance {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
 }
 
 #daily-section-title {

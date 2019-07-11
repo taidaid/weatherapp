@@ -17,25 +17,31 @@ const Location = ({
 
   return (
     <div className="location">
-      <div className="location-input">
-        latitude:
-        <input
-          style={{ textAlign: "center" }}
-          type="number"
-          value={latitude}
-          name="latitude"
-          onChange={e => handleLatitudeChange(e.target.value)}
-        />
-        longitude:
-        <input
-          style={{ textAlign: "center" }}
-          type="number"
-          value={longitude}
-          name="longitude"
-          onChange={e => handleLongitudeChange(e.target.value)}
-        />
-        <button onClick={handleSubmit}>Forecast</button>
+      <div className="location-input-container">
+        <div className="location-input">
+          <div>latitude: </div>
+          <input
+            className="location-input-field"
+            type="number"
+            value={latitude}
+            name="latitude"
+            onChange={e => handleLatitudeChange(e.target.value)}
+          />
+        </div>
+        <div className="location-input">
+          <div>longitude: </div>
+          <input
+            className="location-input-field"
+            type="number"
+            value={longitude}
+            name="longitude"
+            onChange={e => handleLongitudeChange(e.target.value)}
+          />
+        </div>
       </div>
+      <button className="forecast-button" onClick={handleSubmit}>
+        Forecast
+      </button>
     </div>
   );
 };

@@ -8,6 +8,12 @@ const Daily = ({ forecast, getIcon }) => {
     return (
       <div className="daily-description" key={`${index}`}>
         <h4 className="date-time">{day.dateTime._d.toDateString()}</h4>
+        <div className="day-precip-chance">
+          {getIcon("rain")}
+          <div className="day-precip-chance-text  ">
+            :{day.precipProbability * 100}%
+          </div>
+        </div>
         <p className="day-summary">{day.summary}</p>
         <p className="day-temp-high">High: {day.temperatureHigh}</p>
         <p className="day-temp-low">Low: {day.temperatureLow}</p>
@@ -24,7 +30,9 @@ const Daily = ({ forecast, getIcon }) => {
         <h3>{dailyExpand ? "-" : "+"}Daily</h3>
         {forecast.icon ? <div>{getIcon(forecast.icon)}</div> : null}
       </div>
-      <div id="daily-forecasts">{dailyExpand ? dailyForecast : null}</div>
+      <div className="daily-forecasts">
+        {dailyExpand ? dailyForecast : null}
+      </div>
     </div>
   );
 };
