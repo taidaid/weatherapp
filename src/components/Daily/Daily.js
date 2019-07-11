@@ -12,12 +12,14 @@ const Daily = ({ forecast, getIcon }) => {
         <div className="day-precip-chance">
           {getIcon("rain")}
           <div className="day-precip-chance-text  ">
-            :{day.precipProbability * 100}%
+            {day.precipProbability * 100}%
           </div>
         </div>
         <p className="day-summary">{day.summary}</p>
-        <p className="day-temp-high">High: {day.temperatureHigh}</p>
-        <p className="day-temp-low">Low: {day.temperatureLow}</p>
+        <p className="day-temp-high">
+          High: {Math.floor(day.temperatureHigh)}°F
+        </p>
+        <p className="day-temp-low">Low: {Math.floor(day.temperatureLow)}°F</p>
       </div>
     );
   });

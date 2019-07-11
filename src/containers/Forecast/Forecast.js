@@ -1,8 +1,7 @@
 import React from "react";
-import Alerts from "../../components/Alerts/Alerts";
 import Currently from "../../components/Currently/Currently";
 import Daily from "../../components/Daily/Daily";
-// import ForecastType from "../ForecastType/ForecastType";
+import Hourly from "../../components/Hourly/Hourly";
 import moon from "../../assets/Moon.svg";
 import rain from "../../assets/Cloud-Drizzle.svg";
 import cloudSun from "../../assets/Cloud-Sun.svg";
@@ -17,8 +16,6 @@ import cloudHail from "../../assets/Cloud-Hail.svg";
 import "./Forecast.css";
 
 const Forecast = ({ forecast }) => {
-  // console.log(forecast);
-
   const getIcon = icon => {
     switch (icon) {
       case "rain":
@@ -41,40 +38,25 @@ const Forecast = ({ forecast }) => {
         return <img src={cloudMoon} alt="partly-cloudy-night" />;
       case "sleet":
         return <img src={cloudHail} alt="sleet" />;
-
       default:
-        console.log("unknown");
+        console.log("unknown icon");
     }
   };
-
+  console.log(forecast);
   if (forecast) {
     return (
       <div className="forecast">
         <div className="location-name">
           <h6>{forecast.timezone}</h6>
         </div>
-        <Alerts forecast={forecast} />
         {/*Test for empty object in forecast state, if empty render null, otherwise, render forecasts*/}
         {Object.keys(forecast).length > 0 ? (
           <div>
-            <Currently
-              forecast={forecast.currently}
-              getIcon={getIcon}
-              forecastType="currently"
-            />
-            <Daily
-              forecast={forecast.daily}
-              getIcon={getIcon}
-              forecastType="daily"
-            />
-            {/* <ForecastType forecast={forecast.hourly} forecastType="hourly" /> */}
+            <Currently forecast={forecast.currently} getIcon={getIcon} />
+            <Hourly forecast={forecast.hourly} getIcon={getIcon} />
+            <Daily forecast={forecast.daily} getIcon={getIcon} />
           </div>
         ) : null}
-
-        {console.log(forecast)}
-        {/*
-         */}
-        {/* <Currently forecast={forecast} /> */}
       </div>
     );
   } else {

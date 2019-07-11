@@ -18,7 +18,6 @@ function App() {
   //set a default forecast using browser location
   const setDefaultForecast = () => {
     DarkSkyApi.loadItAll().then(result => {
-      console.log("default", result);
       setForecast(result);
       // console.log(typeof result.latitude);
       setLatitude(result.latitude);
@@ -57,13 +56,10 @@ function App() {
 
   //set a new forecast state using location state
   const newLocationForecast = () => {
-    console.log("new coords", latitude, longitude);
-
     DarkSkyApi.loadItAll(null, {
       latitude: latitude,
       longitude: longitude,
     }).then(result => {
-      console.log("new location", result);
       setForecast(result);
     });
   };
