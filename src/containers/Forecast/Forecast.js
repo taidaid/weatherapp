@@ -1,7 +1,7 @@
 import React from "react";
 import Alerts from "../../components/Alerts/Alerts";
 import Currently from "../../components/Currently/Currently";
-import ForecastType from "../ForecastType/ForecastType";
+// import ForecastType from "../ForecastType/ForecastType";
 
 import "./Forecast.css";
 
@@ -15,6 +15,7 @@ const Forecast = ({ forecast }) => {
           <h6>{forecast.timezone}</h6>
         </div>
         <Alerts forecast={forecast} />
+        {/*Test for empty object in forecast state, if empty render null, otherwise, render forecasts*/}
         {Object.keys(forecast).length > 0 ? (
           <div>
             <Currently forecast={forecast.currently} forecastType="currently" />

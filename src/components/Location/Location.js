@@ -2,22 +2,39 @@ import React from "react";
 import "./Location.css";
 // import sampleForecast from "../../assets/sample.json";
 
-const Location = ({ location, handleChange, newLocation }) => {
+const Location = ({
+  latitude,
+  longitude,
+  handleLatitudeChange,
+  handleLongitudeChange,
+  newLocationForecast,
+}) => {
+  //set a new forecast state using current location state
   const handleSubmit = e => {
     e.preventDefault();
-    newLocation();
+    newLocationForecast();
   };
 
   return (
     <div className="location">
       <div className="location-input">
+        latitude:
         <input
           style={{ textAlign: "center" }}
-          type="text"
-          value={JSON.stringify(location)}
-          onChange={e => handleChange(e.target.value)}
+          type="number"
+          value={latitude}
+          name="latitude"
+          onChange={e => handleLatitudeChange(e.target.value)}
         />
-        <button onClick={e => handleSubmit(e)}>Forecast</button>
+        longitude:
+        <input
+          style={{ textAlign: "center" }}
+          type="number"
+          value={longitude}
+          name="longitude"
+          onChange={e => handleLongitudeChange(e.target.value)}
+        />
+        <button onClick={handleSubmit}>Forecast</button>
       </div>
     </div>
   );

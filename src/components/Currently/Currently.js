@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./Currently.css";
-import moon from "../../assets/Moon.svg";
+// import moon from "../../assets/Moon.svg";
 import rain from "../../assets/Cloud-Drizzle.svg";
+import cloudSun from "../../assets/Cloud-Sun.svg";
 
 const Currently = ({ forecast }) => {
   const [currentlyExpand, setCurrentlyExpand] = useState(false);
@@ -18,6 +19,9 @@ const Currently = ({ forecast }) => {
       case "rain":
         console.log("rain", icon);
         return <img src={rain} alt="rain" />;
+      case "partly-cloudy-day":
+        console.log("partly-cloudy-day", icon);
+        return <img src={cloudSun} alt="rain" />;
 
       default:
         console.log("unknown");
