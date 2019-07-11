@@ -1,0 +1,29 @@
+#daily-forecasts {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+}
+
+.daily-description {
+  border: 1px solid gray;
+  margin: 5px;
+  width: 25%;
+}
+
+#daily-section-title {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.day-summary {
+  font-size: 0.8em;
+}
+
+.day-temp-high {
+  font-size: 0.5em;
+}
+.day-temp-low {
+  font-size: 0.5em;
+}
