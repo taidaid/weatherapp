@@ -50,7 +50,6 @@ function App() {
 
   //set a new latitude state from Location component input
   const handleLatitudeChange = newLatitude => {
-    console.log(typeof newLatitude);
     setLatitude(newLatitude);
   };
   //set a new longitude state from Location component input
