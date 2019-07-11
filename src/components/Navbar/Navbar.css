@@ -1,15 +1,15 @@
 .navbar {
-	top: 0;
-	left: 0;
-	position: fixed;
-    display: flex;
-    justify-content: space-between;
-	height: 20vh;
-	width: 100vw;
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  height: 20vh;
+  width: 100vw;
+  background-color: #262626;
 }
 
- .navbar img {
-	height: 20vh;
-	left: 0;
-	
+.navbar img {
+  height: 20vh;
+  left: 0;
 }
