@@ -1,7 +1,7 @@
 .currently-description {
   display: flex;
   flex-flow: row;
-  max-width: 100vw;
+  max-width: 100%;
   flex-wrap: wrap;
 
   justify-content: center;
@@ -18,4 +18,8 @@
   padding: 5px 10px;
   border: 1px gray solid;
   margin: 5px;
+}
+
+#summary {
+  margin-top: 0;
 }

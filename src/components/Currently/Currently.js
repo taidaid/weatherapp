@@ -13,30 +13,27 @@ const Currently = ({ forecast, getIcon }) => {
         <h3>{currentlyExpand ? "-" : "+"}Currently</h3>
         {<div>{getIcon(forecast.icon)}</div>}
       </div>
+      <h5 id="summary">{forecast.summary}</h5>
+      {/* {console.log("currently", forecast)} */}
 
-      <h5>Summary: {forecast.summary}</h5>
-      <div className="currently-description">
-        {console.log("currently", forecast)}
+      {currentlyExpand ? (
+        <div className="currently-description">
+          <div className="descriptor">Temperature: {forecast.temperature}</div>
+          <div className="descriptor">Humidity: {forecast.humidity}</div>
+          <div className="descriptor">
+            Chance of Precipitation: {forecast.precipProbabidivty}
+          </div>
+          <div className="descriptor">
+            Precipitation Type: {forecast.precipType}
+          </div>
 
-        {currentlyExpand ? (
-          <ul>
-            <li className="descriptor">Temperature: {forecast.temperature}</li>
-            <li className="descriptor">Humidity: {forecast.humidity}</li>
-            <li className="descriptor">
-              Chance of Precipitation: {forecast.precipProbability}
-            </li>
-            <li className="descriptor">
-              Precipitation Type: {forecast.precipType}
-            </li>
-
-            <li className="descriptor">
-              Wind Direction: {forecast.windDirection}
-            </li>
-            <li className="descriptor">Wind Gust: {forecast.windGust}</li>
-            <li className="descriptor">Wind Speed: {forecast.windSpeed}</li>
-          </ul>
-        ) : null}
-      </div>
+          <div className="descriptor">
+            Wind Direction: {forecast.windDirection}
+          </div>
+          <div className="descriptor">Wind Gust: {forecast.windGust}</div>
+          <div className="descriptor">Wind Speed: {forecast.windSpeed}</div>
+        </div>
+      ) : null}
     </div>
   );
 };
