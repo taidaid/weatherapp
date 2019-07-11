@@ -7,6 +7,7 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <img src={cloudSun} className="App-logo" alt="logo" />
+      <h1>The Weather App</h1>
       <img src={rainbow} alt="rainbow" />
     </div>
   );
