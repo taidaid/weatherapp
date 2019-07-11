@@ -1,13 +1,10 @@
 .currently-description {
   display: flex;
-  flex-flow: row;
+  flex-flow: column;
   max-width: 100%;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-.currently-description.collapsed {
-  max-height: 0;
+  max-height: 20vh;
 }
 
 .currently-section-title {
@@ -20,6 +17,5 @@
 
 .descriptor {
   padding: 5px 10px;
-  border: 1px gray solid;
   margin: 5px;
 }
