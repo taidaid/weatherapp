@@ -3,14 +3,18 @@
   flex-flow: row;
   max-width: 100%;
   flex-wrap: wrap;
-
   justify-content: center;
 }
 
-#currently-section-title {
+.currently-description.collapsed {
+  max-height: 0;
+}
+
+.currently-section-title {
   display: flex;
   flex-flow: row;
   justify-content: center;
+  align-items: center;
   cursor: pointer;
 }
 
@@ -18,8 +22,4 @@
   padding: 5px 10px;
   border: 1px gray solid;
   margin: 5px;
-}
-
-#summary {
-  margin-top: 0;
 }

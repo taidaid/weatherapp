@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./Daily.css";
+import SmoothCollapse from "react-smooth-collapse";
 
 const Daily = ({ forecast, getIcon }) => {
-  const [dailyExpand, setDailyExpand] = useState(false);
+  const [dailyExpanded, setDailyExpanded] = useState(false);
 
   const dailyForecast = forecast.data.map((day, index) => {
     return (
@@ -25,14 +26,14 @@ const Daily = ({ forecast, getIcon }) => {
     <div className="daily">
       <div
         id="daily-section-title"
-        onClick={() => setDailyExpand(!dailyExpand)}
+        onClick={() => setDailyExpanded(!dailyExpanded)}
       >
-        <h3>{dailyExpand ? "-" : "+"}Daily</h3>
+        <h3>{dailyExpanded ? "-" : "+"}Daily</h3>
         {forecast.icon ? <div>{getIcon(forecast.icon)}</div> : null}
       </div>
-      <div className="daily-forecasts">
-        {dailyExpand ? dailyForecast : null}
-      </div>
+      <SmoothCollapse expanded={dailyExpanded} heightTransition={"1s ease"}>
+        <div className="daily-forecasts">{dailyForecast}</div>
+      </SmoothCollapse>
     </div>
   );
 };

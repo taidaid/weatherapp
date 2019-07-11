@@ -1,22 +1,28 @@
 import React, { useState } from "react";
 import "./Currently.css";
+import SmoothCollapse from "react-smooth-collapse";
 
 const Currently = ({ forecast, getIcon }) => {
-  const [currentlyExpand, setCurrentlyExpand] = useState(false);
+  const [currentlyExpanded, setCurrentlyExpanded] = useState(false);
+
+  const expandCurrently = () => {
+    setCurrentlyExpanded(!currentlyExpanded);
+  };
 
   return (
     <div className="currently">
       <div
-        id="currently-section-title"
-        onClick={() => setCurrentlyExpand(!currentlyExpand)}
+        className="currently-section-title"
+        onClick={() => expandCurrently(!currentlyExpanded)}
       >
-        <h3>{currentlyExpand ? "-" : "+"}Currently</h3>
+        <h3>{currentlyExpanded ? "-" : "+"}Currently</h3>
         {<div>{getIcon(forecast.icon)}</div>}
+        <h6 id="summary">({forecast.summary})</h6>
       </div>
-      <h5 id="summary">{forecast.summary}</h5>
+
       {/* {console.log("currently", forecast)} */}
 
-      {currentlyExpand ? (
+      <SmoothCollapse expanded={currentlyExpanded}>
         <div className="currently-description">
           <div className="descriptor">Temperature: {forecast.temperature}</div>
           <div className="descriptor">Humidity: {forecast.humidity}</div>
@@ -33,7 +39,7 @@ const Currently = ({ forecast, getIcon }) => {
           <div className="descriptor">Wind Gust: {forecast.windGust}</div>
           <div className="descriptor">Wind Speed: {forecast.windSpeed}</div>
         </div>
-      ) : null}
+      </SmoothCollapse>
     </div>
   );
 };
