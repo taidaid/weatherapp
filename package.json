@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "dark-sky-api": "^0.6.32",
     "darkskyjs": "^0.2.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

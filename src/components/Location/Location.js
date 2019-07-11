@@ -1,29 +1,40 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Location.css";
-import sampleForecast from "../../assets/sample.json";
+// import sampleForecast from "../../assets/sample.json";
 
-const Location = () => {
-  const [location, setLocation] = useState("42.3601,-71.0589");
-
-  const handleChange = newLocationInput => {
-    setLocation(newLocationInput);
+const Location = ({
+  latitude,
+  longitude,
+  handleLatitudeChange,
+  handleLongitudeChange,
+  newLocationForecast,
+}) => {
+  //set a new forecast state using current location state
+  const handleSubmit = e => {
+    e.preventDefault();
+    newLocationForecast();
   };
 
-  const handleSubmit = () => {};
   return (
     <div className="location">
-      <div className="location-name">
-        <h2>Location Name</h2>
-        <h6>{sampleForecast.timezone}</h6>
-      </div>
       <div className="location-input">
+        latitude:
         <input
           style={{ textAlign: "center" }}
-          type="text"
-          value={location}
-          onChange={handleChange}
-          onSubmit={handleSubmit}
+          type="number"
+          value={latitude}
+          name="latitude"
+          onChange={e => handleLatitudeChange(e.target.value)}
         />
+        longitude:
+        <input
+          style={{ textAlign: "center" }}
+          type="number"
+          value={longitude}
+          name="longitude"
+          onChange={e => handleLongitudeChange(e.target.value)}
+        />
+        <button onClick={handleSubmit}>Forecast</button>
       </div>
     </div>
   );
