@@ -40,7 +40,7 @@ const Hourly = ({ forecast, getIcon }) => {
         <h3>{hourlyExpanded ? "-" : "+"}Hourly</h3>
         {<div>{getIcon(forecast.icon)}</div>}
       </div>
-      <h6 className="summary">({forecast.summary})</h6>
+      <h6 className="summary">{forecast.summary}</h6>
       <SmoothCollapse expanded={hourlyExpanded}>
         <div className="hourly-forecasts">{hourlyForecast}</div>
       </SmoothCollapse>
