@@ -22,7 +22,7 @@ html,
 }
 
 .App-body {
-  box-shadow: -2px 2px 2px black;
+  box-shadow: -2px 0px 5px black;
   margin-bottom: 20px;
   width: 80vw;
 }
