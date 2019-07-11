@@ -1,25 +1,21 @@
 .currently-description {
   display: flex;
-  flex-flow: row;
+  flex-flow: column;
   max-width: 100%;
   flex-wrap: wrap;
-
   justify-content: center;
+  max-height: 20vh;
 }
 
-#currently-section-title {
+.currently-section-title {
   display: flex;
   flex-flow: row;
   justify-content: center;
+  align-items: center;
   cursor: pointer;
 }
 
 .descriptor {
   padding: 5px 10px;
-  border: 1px gray solid;
   margin: 5px;
-}
-
-#summary {
-  margin-top: 0;
 }

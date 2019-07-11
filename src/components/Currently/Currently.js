@@ -1,39 +1,50 @@
 import React, { useState } from "react";
 import "./Currently.css";
+import SmoothCollapse from "react-smooth-collapse";
 
 const Currently = ({ forecast, getIcon }) => {
-  const [currentlyExpand, setCurrentlyExpand] = useState(false);
+  const [currentlyExpanded, setCurrentlyExpanded] = useState(false);
+
+  const expandCurrently = () => {
+    setCurrentlyExpanded(!currentlyExpanded);
+  };
 
   return (
     <div className="currently">
       <div
-        id="currently-section-title"
-        onClick={() => setCurrentlyExpand(!currentlyExpand)}
+        className="currently-section-title"
+        onClick={() => expandCurrently(!currentlyExpanded)}
       >
-        <h3>{currentlyExpand ? "-" : "+"}Currently</h3>
+        <h3>{currentlyExpanded ? "-" : "+"}Currently</h3>
         {<div>{getIcon(forecast.icon)}</div>}
+        <h6 id="summary">({forecast.summary})</h6>
       </div>
-      <h5 id="summary">{forecast.summary}</h5>
+
       {/* {console.log("currently", forecast)} */}
 
-      {currentlyExpand ? (
+      <SmoothCollapse expanded={currentlyExpanded}>
         <div className="currently-description">
-          <div className="descriptor">Temperature: {forecast.temperature}</div>
-          <div className="descriptor">Humidity: {forecast.humidity}</div>
           <div className="descriptor">
-            Chance of Precipitation: {forecast.precipProbabidivty}
+            Temperature: {forecast.temperature}°F
           </div>
+          <div className="descriptor">Humidity: {forecast.humidity * 100}%</div>
           <div className="descriptor">
-            Precipitation Type: {forecast.precipType}
+            Chance of Precipitation: {forecast.precipProbability * 100}%
           </div>
+
+          {forecast.precipType ? (
+            <div className="descriptor">
+              Precipitation Type: {forecast.precipType}
+            </div>
+          ) : null}
 
           <div className="descriptor">
             Wind Direction: {forecast.windDirection}
           </div>
-          <div className="descriptor">Wind Gust: {forecast.windGust}</div>
-          <div className="descriptor">Wind Speed: {forecast.windSpeed}</div>
+          <div className="descriptor">Wind Gust: {forecast.windGust}mph</div>
+          <div className="descriptor">Wind Speed: {forecast.windSpeed}mph</div>
         </div>
-      ) : null}
+      </SmoothCollapse>
     </div>
   );
 };
