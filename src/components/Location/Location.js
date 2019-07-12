@@ -1,6 +1,5 @@
 import React from "react";
 import "./Location.css";
-// import sampleForecast from "../../assets/sample.json";
 
 const Location = ({
   latitude,
