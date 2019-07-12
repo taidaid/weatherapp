@@ -3,14 +3,19 @@
   flex-flow: row;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 5px black;
-  padding-bottom: 5px;
+  box-shadow: 0 1px 5px black;
+
+  margin-top: 20px;
   margin-bottom: 5px;
+  padding: 20px 40px;
 }
 
 .location-input-container {
   display: flex;
   flex-flow: column;
+}
+.location-label {
+  width: 80px;
 }
 
 .location-input {
@@ -21,7 +26,26 @@
 }
 .location-input-field {
   margin-left: 20px;
+  width: 25%;
+}
+
+.select-direction {
+  width: 40px;
 }
 .forecast-button {
   margin-left: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .location {
+    display: flex;
+    flex-flow: column;
+    margin-top: 20px;
+  }
+  .forecast-button {
+    margin: 20px 20px;
+  }
+  .location-input-field {
+    margin: 20px;
+  }
 }

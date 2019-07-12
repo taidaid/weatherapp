@@ -47,7 +47,7 @@ const Forecast = ({ forecast }) => {
     return (
       <div className="forecast">
         <div className="location-name">
-          <h6>{forecast.timezone}</h6>
+          {forecast.timezone ? <h6>Timezone: {forecast.timezone}</h6> : null}
         </div>
         {/*Test for empty object in forecast state, if empty render null, otherwise, render forecasts*/}
         {Object.keys(forecast).length > 0 ? (

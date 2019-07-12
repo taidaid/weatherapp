@@ -21,7 +21,6 @@ html,
 }
 
 .App-body {
-  box-shadow: 0px 0px 5px black;
   margin-bottom: 20px;
   width: 80vw;
 }
@@ -56,4 +55,18 @@ html,
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #727272;
+}
+
+@media only screen and (max-width: 600px) {
+  .App-body {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .App {
+    padding-right: 0vw;
+    padding-left: 0vw;
+  }
 }

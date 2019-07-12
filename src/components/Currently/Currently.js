@@ -13,7 +13,7 @@ const Currently = ({ forecast, getIcon }) => {
       >
         <h3>{currentlyExpanded ? "-" : "+"}Currently</h3>
         {<div>{getIcon(forecast.icon)}</div>}
-        <h6 className="summary">({forecast.summary})</h6>
+        <h6 className="summary">{forecast.summary}</h6>
       </div>
 
       {/* {console.log("currently", forecast)} */}

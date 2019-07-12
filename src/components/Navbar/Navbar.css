@@ -10,7 +10,20 @@
   opacity: 0.95;
 }
 
-.navbar img {
+.navbar-img {
   height: 20vh;
   left: 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .navbar {
+    font-size: calc(10px + 1vmin);
+  }
+  .rainbow-img {
+    display: block;
+    max-width: 230px;
+    max-height: 95px;
+    width: auto;
+    height: auto;
+  }
 }

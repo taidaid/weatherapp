@@ -17,7 +17,7 @@ const Daily = ({ forecast, getIcon }) => {
         <div className="day-precip-chance">
           {getIcon("rain")}
           <div className="day-precip-chance-text  ">
-            {day.precipProbability * 100}%
+            {Math.floor(day.precipProbability * 100)}%
           </div>
         </div>
         <p className="day-summary">{day.summary}</p>
@@ -36,11 +36,12 @@ const Daily = ({ forecast, getIcon }) => {
   return (
     <div className="daily">
       <div
-        id="daily-section-title"
+        className="daily-section-title"
         onClick={() => setDailyExpanded(!dailyExpanded)}
       >
         <h3>{dailyExpanded ? "-" : "+"}Daily</h3>
         {forecast.icon ? <div>{getIcon(forecast.icon)}</div> : null}
+        <h6 className="summary">{forecast.summary}</h6>
       </div>
       <SmoothCollapse expanded={dailyExpanded} heightTransition={"1s ease"}>
         <div className="daily-forecasts">{dailyForecast}</div>
