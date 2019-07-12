@@ -8,6 +8,7 @@ const Location = ({
   handleLatitudeChange,
   handleLongitudeChange,
   newLocationForecast,
+  setDefaultForecast,
 }) => {
   //set a new forecast state using current location state
   const handleSubmit = e => {
@@ -19,7 +20,7 @@ const Location = ({
     <div className="location">
       <div className="location-input-container">
         <div className="location-input">
-          <div>latitude: </div>
+          <label>latitude: </label>
           <input
             className="location-input-field"
             type="number"
@@ -29,7 +30,7 @@ const Location = ({
           />
         </div>
         <div className="location-input">
-          <div>longitude: </div>
+          <label>longitude: </label>
           <input
             className="location-input-field"
             type="number"
@@ -41,6 +42,9 @@ const Location = ({
       </div>
       <button className="forecast-button" onClick={handleSubmit}>
         Forecast
+      </button>
+      <button className="forecast-button" onClick={setDefaultForecast}>
+        Use My Location
       </button>
     </div>
   );

@@ -4,10 +4,15 @@ import SmoothCollapse from "react-smooth-collapse";
 
 const Daily = ({ forecast, getIcon }) => {
   const [dailyExpanded, setDailyExpanded] = useState(false);
+  const [dayExpanded, setDayExpanded] = useState(false);
 
   const dailyForecast = forecast.data.map((day, index) => {
     return (
-      <div className="daily-description" key={`${index}`}>
+      <div
+        className="daily-description"
+        key={`${index}`}
+        onClick={() => setDayExpanded(!dayExpanded)}
+      >
         <h4 className="date-time">{day.dateTime._d.toDateString()}</h4>
         <div className="day-precip-chance">
           {getIcon("rain")}
@@ -20,6 +25,10 @@ const Daily = ({ forecast, getIcon }) => {
           High: {Math.floor(day.temperatureHigh)}°F
         </p>
         <p className="day-temp-low">Low: {Math.floor(day.temperatureLow)}°F</p>
+
+        <p className="cloud-cover">
+          Cloud Cover: {Math.floor(day.cloudCover * 100)}%
+        </p>
       </div>
     );
   });

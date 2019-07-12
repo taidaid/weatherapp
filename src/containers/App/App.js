@@ -24,11 +24,10 @@ function App() {
       setLongitude(result.longitude);
     });
   };
-  if (forecast && Object.keys(forecast).length === 0) setDefaultForecast();
 
   //simulate a loading time for component mount
   const simulateLoading = () => {
-    return new Promise(resolve => setTimeout(resolve, 500));
+    return new Promise(resolve => setTimeout(resolve, 100));
   };
   //provide a loading screen while component mounts
   useEffect(() => {
@@ -77,6 +76,7 @@ function App() {
           handleLatitudeChange={handleLatitudeChange}
           handleLongitudeChange={handleLongitudeChange}
           newLocationForecast={newLocationForecast}
+          setDefaultForecast={setDefaultForecast}
         />
         {/* Displays the forecast results for the given location
          */}
