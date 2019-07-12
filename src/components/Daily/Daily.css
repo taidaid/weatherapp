@@ -20,11 +20,13 @@
   align-items: center;
 }
 
-#daily-section-title {
+.daily-section-title {
   display: flex;
   flex-flow: row;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
   cursor: pointer;
+  padding: 0 20px;
 }
 
 .day-summary {

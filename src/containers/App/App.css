@@ -59,7 +59,10 @@ html,
 
 @media only screen and (max-width: 600px) {
   .App-body {
-    width: 100vw;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 100%;
   }
 
   .App {

@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   box-shadow: 0 1px 5px black;
-  padding-bottom: 5px;
+
   margin-top: 20px;
   margin-bottom: 5px;
   padding: 20px 40px;
@@ -13,6 +13,9 @@
 .location-input-container {
   display: flex;
   flex-flow: column;
+}
+.location-label {
+  width: 80px;
 }
 
 .location-input {
@@ -26,12 +29,8 @@
   width: 25%;
 }
 
-#longitude {
-  margin-left: 0px;
-}
-
 .select-direction {
-  width: 35px;
+  width: 40px;
 }
 .forecast-button {
   margin-left: 20px;
