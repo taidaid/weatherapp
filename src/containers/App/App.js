@@ -12,17 +12,23 @@ function App() {
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
   const [forecast, setForecast] = useState({});
+  const [error, setError] = useState(false);
   DarkSkyApi.apiKey = "feda928cd49f3fb981c77fc4936451dc";
   // console.log(forecast.keys);
 
   //set a default forecast using browser location
   const setDefaultForecast = () => {
-    DarkSkyApi.loadItAll().then(result => {
-      setForecast(result);
-      // console.log(typeof result.latitude);
-      setLatitude(result.latitude);
-      setLongitude(result.longitude);
-    });
+    DarkSkyApi.loadItAll()
+      .then(result => {
+        setForecast(result);
+        // console.log(typeof result.latitude);
+        setLatitude(result.latitude);
+        setLongitude(result.longitude);
+      })
+      .catch(error => {
+        setError(true);
+        console.log(error);
+      });
   };
 
   //simulate a loading time for component mount
@@ -58,9 +64,15 @@ function App() {
     DarkSkyApi.loadItAll(null, {
       latitude: latitude,
       longitude: longitude,
-    }).then(result => {
-      setForecast(result);
-    });
+    })
+      .then(result => {
+        setError(false);
+        setForecast(result);
+      })
+      .catch(error => {
+        setError(true);
+        console.log(error);
+      });
   };
 
   return (
@@ -80,7 +92,14 @@ function App() {
         />
         {/* Displays the forecast results for the given location
          */}
-        <Forecast forecast={forecast} />
+        {error ? (
+          <p>
+            There was an error getting your forecast. Try entering new
+            latitude/longitude numbers or refreshing the page.
+          </p>
+        ) : (
+          <Forecast forecast={forecast} />
+        )}
       </div>
     </div>
   );
