@@ -1,55 +1,64 @@
 import React, { useEffect, useState } from "react";
 import DarkSkyApi from "dark-sky-api";
+import { getNavigatorCoords } from "geo-loc-utils";
 import "./App.css";
 import Forecast from "../Forecast/Forecast";
-
 import Navbar from "../../components/Navbar/Navbar";
 
 //Provides the input for finding a location's forecast
 import Location from "../../components/Location/Location";
 
 function App() {
-  const [latitude, setLatitude] = useState(0);
-  const [longitude, setLongitude] = useState(0);
+  const [latitude, setLatitude] = useState(40.7128);
+  const [northSouth, setNorthSouth] = useState("north");
+  const [eastWest, setEastWest] = useState("west");
+  const [longitude, setLongitude] = useState(74.006);
   const [forecast, setForecast] = useState({});
   const [error, setError] = useState(false);
   const [initialized, setInitialized] = useState(false);
   DarkSkyApi.apiKey = "feda928cd49f3fb981c77fc4936451dc";
   // console.log(forecast.keys);
 
-  //set a default forecast using browser location
-  const setDefaultForecast = () => {
-    setInitialized(true);
-    DarkSkyApi.loadItAll()
-      .then(result => {
-        setForecast(result);
-        // console.log(typeof result.latitude);
-        setLatitude(result.latitude);
-        setLongitude(result.longitude);
-      })
-      .catch(error => {
-        setError(true);
-        console.log(error);
+  //get device's location
+  const getDeviceLocation = () => {
+    getNavigatorCoords().then(({ latitude, longitude }) => {
+      setLatitude(latitude);
+      setLongitude(longitude);
+      if (latitude < 0) {
+        setNorthSouth("south");
+      } else if (latitude >= 0) {
+        setNorthSouth("north");
+      }
+      if (longitude < 0) {
+        setEastWest("west");
+      } else if (longitude >= 0) {
+        setEastWest("east");
+      }
+      getForecast({
+        latitude: latitude,
+        longitude: longitude,
       });
+    });
   };
 
-  //simulate a loading time for component mount
-  const simulateLoading = () => {
-    return new Promise(resolve => setTimeout(resolve, 100));
+  //get the forecast local to the browser's location
+  const getLocalForecast = () => {
+    getDeviceLocation();
+
+    setInitialized(true);
   };
+
   //provide a loading screen while component mounts
   useEffect(() => {
-    simulateLoading().then(() => {
-      const ele = document.getElementById("ipl-progress-indicator");
-      if (ele) {
-        // fade out
-        ele.classList.add("available");
-        setTimeout(() => {
-          // remove from DOM
-          ele.outerHTML = "";
-        }, 500);
-      }
-    });
+    const ele = document.getElementById("ipl-progress-indicator");
+    if (ele) {
+      // fade out
+      ele.classList.add("available");
+      setTimeout(() => {
+        // remove from DOM
+        ele.outerHTML = "";
+      }, 300);
+    }
   }, []);
 
   //set a new latitude state from Location component input
@@ -61,12 +70,20 @@ function App() {
     setLongitude(newLongitude);
   };
 
-  //set a new forecast state using location state
-  const newLocationForecast = () => {
-    setInitialized(true);
+  //The DarkSkyApi uses postiive numbers for north and negative for south. This uses the select input to make the latitude negative if it is south.
+  const handleNorthSouthChange = direction => {
+    setNorthSouth(direction);
+  };
+
+  //The DarkSkyApi uses postiive numbers for east and negative for west. This uses the select input to make the longitude negative if it is west.
+  const handleEastWestChange = direction => {
+    setEastWest(direction);
+  };
+
+  const getForecast = coords => {
     DarkSkyApi.loadItAll(null, {
-      latitude: latitude,
-      longitude: longitude,
+      latitude: coords.latitude,
+      longitude: coords.longitude,
     })
       .then(result => {
         setError(false);
@@ -76,6 +93,23 @@ function App() {
         setError(true);
         console.log(error);
       });
+  };
+
+  //set a new forecast state using location state
+  const newLocationForecast = () => {
+    setInitialized(true);
+    let latitudeforForecast = latitude;
+    let longitudeForForecast = longitude;
+    if (northSouth === "south" && latitude > 0) {
+      latitudeforForecast = latitudeforForecast * -1;
+    }
+    if (eastWest === "west" && longitude > 0) {
+      longitudeForForecast = longitudeForForecast * -1;
+    }
+    getForecast({
+      latitude: latitudeforForecast,
+      longitude: longitudeForForecast,
+    });
   };
 
   return (
@@ -91,12 +125,16 @@ function App() {
           handleLatitudeChange={handleLatitudeChange}
           handleLongitudeChange={handleLongitudeChange}
           newLocationForecast={newLocationForecast}
-          setDefaultForecast={setDefaultForecast}
+          getLocalForecast={() => getLocalForecast()}
+          handleNorthSouthChange={handleNorthSouthChange}
+          handleEastWestChange={handleEastWestChange}
+          northSouth={northSouth}
+          eastWest={eastWest}
         />
 
         {initialized ? null : (
           <p>
-            Try entering some numbers for the latitude and longtiude and
+            Try entering some numbers for the latitude and longitude and
             clicking 'Forecast'. Or you can click 'Use My Location' to get your
             local forecast.
           </p>
