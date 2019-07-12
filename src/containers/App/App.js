@@ -13,11 +13,13 @@ function App() {
   const [longitude, setLongitude] = useState(0);
   const [forecast, setForecast] = useState({});
   const [error, setError] = useState(false);
+  const [initialized, setInitialized] = useState(false);
   DarkSkyApi.apiKey = "feda928cd49f3fb981c77fc4936451dc";
   // console.log(forecast.keys);
 
   //set a default forecast using browser location
   const setDefaultForecast = () => {
+    setInitialized(true);
     DarkSkyApi.loadItAll()
       .then(result => {
         setForecast(result);
@@ -61,6 +63,7 @@ function App() {
 
   //set a new forecast state using location state
   const newLocationForecast = () => {
+    setInitialized(true);
     DarkSkyApi.loadItAll(null, {
       latitude: latitude,
       longitude: longitude,
@@ -90,12 +93,21 @@ function App() {
           newLocationForecast={newLocationForecast}
           setDefaultForecast={setDefaultForecast}
         />
-        {/* Displays the forecast results for the given location
+
+        {initialized ? null : (
+          <p>
+            Try entering some numbers for the latitude and longtiude and
+            clicking 'Forecast'. Or you can click 'Use My Location' to get your
+            local forecast.
+          </p>
+        )}
+        {/* Displays the forecast results for the given location or an error message
          */}
         {error ? (
           <p>
             There was an error getting your forecast. Try entering new
-            latitude/longitude numbers or refreshing the page.
+            latitude/longitude numbers and then clicking 'Forecast' or
+            refreshing the page.
           </p>
         ) : (
           <Forecast forecast={forecast} />
