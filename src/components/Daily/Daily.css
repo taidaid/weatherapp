@@ -29,6 +29,7 @@
 
 .day-summary {
   font-size: 0.8em;
+  min-height: 60px;
 }
 
 .day-temp-high {
