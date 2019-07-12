@@ -19,7 +19,7 @@ const Location = ({
     <div className="location">
       <div className="location-input-container">
         <div className="location-input">
-          <label for="latitude">latitude: </label>
+          <label htmlFor="latitude">latitude: </label>
           <input
             className="location-input-field"
             type="number"
@@ -30,7 +30,7 @@ const Location = ({
           />
         </div>
         <div className="location-input">
-          <label for="longitude">longitude: </label>
+          <label htmlFor="longitude">longitude: </label>
           <input
             className="location-input-field"
             type="number"
