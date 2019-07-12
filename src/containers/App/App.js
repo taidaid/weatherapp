@@ -12,17 +12,25 @@ function App() {
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
   const [forecast, setForecast] = useState({});
+  const [error, setError] = useState(false);
+  const [initialized, setInitialized] = useState(false);
   DarkSkyApi.apiKey = "feda928cd49f3fb981c77fc4936451dc";
   // console.log(forecast.keys);
 
   //set a default forecast using browser location
   const setDefaultForecast = () => {
-    DarkSkyApi.loadItAll().then(result => {
-      setForecast(result);
-      // console.log(typeof result.latitude);
-      setLatitude(result.latitude);
-      setLongitude(result.longitude);
-    });
+    setInitialized(true);
+    DarkSkyApi.loadItAll()
+      .then(result => {
+        setForecast(result);
+        // console.log(typeof result.latitude);
+        setLatitude(result.latitude);
+        setLongitude(result.longitude);
+      })
+      .catch(error => {
+        setError(true);
+        console.log(error);
+      });
   };
 
   //simulate a loading time for component mount
@@ -55,12 +63,19 @@ function App() {
 
   //set a new forecast state using location state
   const newLocationForecast = () => {
+    setInitialized(true);
     DarkSkyApi.loadItAll(null, {
       latitude: latitude,
       longitude: longitude,
-    }).then(result => {
-      setForecast(result);
-    });
+    })
+      .then(result => {
+        setError(false);
+        setForecast(result);
+      })
+      .catch(error => {
+        setError(true);
+        console.log(error);
+      });
   };
 
   return (
@@ -78,9 +93,25 @@ function App() {
           newLocationForecast={newLocationForecast}
           setDefaultForecast={setDefaultForecast}
         />
-        {/* Displays the forecast results for the given location
+
+        {initialized ? null : (
+          <p>
+            Try entering some numbers for the latitude and longtiude and
+            clicking 'Forecast'. Or you can click 'Use My Location' to get your
+            local forecast.
+          </p>
+        )}
+        {/* Displays the forecast results for the given location or an error message
          */}
-        <Forecast forecast={forecast} />
+        {error ? (
+          <p>
+            There was an error getting your forecast. Try entering new
+            latitude/longitude numbers and then clicking 'Forecast' or
+            refreshing the page.
+          </p>
+        ) : (
+          <Forecast forecast={forecast} />
+        )}
       </div>
     </div>
   );
