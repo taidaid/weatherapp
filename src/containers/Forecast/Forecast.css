@@ -3,3 +3,9 @@
   max-width: 80vw;
   box-shadow: 0 1px 5px black;
 }
+
+@media only screen and (max-width: 768px) {
+  .forecast {
+    box-shadow: 0 0 0;
+  }
+}

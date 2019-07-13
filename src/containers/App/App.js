@@ -16,14 +16,14 @@ function App() {
   const [forecast, setForecast] = useState({});
   const [error, setError] = useState(false);
   const [initialized, setInitialized] = useState(false);
-  DarkSkyApi.apiKey = "feda928cd49f3fb981c77fc4936451dc";
-  // console.log(forecast.keys);
+  DarkSkyApi.apiKey = "dd94891f9307a1083ce9200cc07c0448";
 
-  //get device's location
-  const getDeviceLocation = () => {
+  //get the forecast local to the browser's location
+  const getLocalForecast = () => {
     getNavigatorCoords().then(({ latitude, longitude }) => {
       setLatitude(latitude);
       setLongitude(longitude);
+      //uses north/south and east/west state to make latitude/longitude correspondingly positive/negative for api call
       if (latitude < 0) {
         setNorthSouth("south");
       } else if (latitude >= 0) {
@@ -39,12 +39,6 @@ function App() {
         longitude: longitude,
       });
     });
-  };
-
-  //get the forecast local to the browser's location
-  const getLocalForecast = () => {
-    getDeviceLocation();
-
     setInitialized(true);
   };
 
@@ -81,6 +75,7 @@ function App() {
   };
 
   const getForecast = coords => {
+    console.log("new forecast", coords);
     DarkSkyApi.loadItAll(null, {
       latitude: coords.latitude,
       longitude: coords.longitude,

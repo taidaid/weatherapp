@@ -16,13 +16,13 @@ html,
   align-items: center;
   padding-top: 20vh;
   color: white;
-  padding-right: 5vw;
-  padding-left: 5vw;
+  padding-right: 5%;
+  padding-left: 5%;
 }
 
 .App-body {
   margin-bottom: 20px;
-  width: 80vw;
+  width: 80%;
 }
 
 .App-logo {
@@ -57,7 +57,7 @@ html,
   background: #727272;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
   .App-body {
     display: flex;
     flex-flow: column;
@@ -66,7 +66,7 @@ html,
   }
 
   .App {
-    padding-right: 0vw;
-    padding-left: 0vw;
+    padding-right: 2%;
+    padding-left: 2%;
   }
 }

@@ -15,7 +15,7 @@
   left: 0;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
   .navbar {
     font-size: calc(10px + 1vmin);
   }
