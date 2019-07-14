@@ -1,3 +1,7 @@
+.daily {
+  margin-top: 20px;
+}
+
 .daily-forecasts {
   display: flex;
   flex-flow: row;

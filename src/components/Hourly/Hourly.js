@@ -20,7 +20,7 @@ const Hourly = ({ forecast, getIcon }) => {
       <div className="hourly-description" key={`${index}`}>
         <h4 className="date-time">{getHourFromUnixTime(hour.time)}</h4>
         <div className="hourly-precip-chance">
-          {getIcon("rain")}
+          <div>Rain: </div>
           <div className="day-precip-chance-text  ">
             {Math.floor(hour.precipProbability * 100)}%
           </div>

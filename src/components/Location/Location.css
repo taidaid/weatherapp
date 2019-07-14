@@ -65,4 +65,7 @@
   .forecast-button {
     margin: 20px 20px;
   }
+  .location-label {
+    text-align: center;
+  }
 }

@@ -15,7 +15,7 @@ const Daily = ({ forecast, getIcon }) => {
       >
         <h4 className="date-time">{day.dateTime._d.toDateString()}</h4>
         <div className="day-precip-chance">
-          {getIcon("rain")}
+          <div>Rain: </div>
           <div className="day-precip-chance-text  ">
             {Math.floor(day.precipProbability * 100)}%
           </div>
