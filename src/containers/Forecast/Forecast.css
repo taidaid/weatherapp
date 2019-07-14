@@ -1,11 +1,12 @@
 .forecast {
-  margin-bottom: 10px;
-  max-width: 80vw;
-  box-shadow: 0 1px 5px black;
+	margin: 10px 0;
+	padding: 5px 0;
+	max-width: 80vw;
+	box-shadow: 0 1px 5px black;
 }
 
 @media only screen and (max-width: 768px) {
-  .forecast {
-    box-shadow: 0 0 0;
-  }
+	.forecast {
+		box-shadow: 0 0 0;
+	}
 }

@@ -42,9 +42,9 @@ const Forecast = ({ forecast, initialized }) => {
 				console.log("unknown icon");
 		}
 	};
-	console.log(forecast.hasOwnProperty());
+
 	console.log(forecast);
-	if (Object.keys(forecast).length > 0 && forecast.hasOwnProperty()) {
+	if (Object.keys(forecast).length > 0 && forecast.icon) {
 		return (
 			<div className="forecast">
 				<div className="location-name">
