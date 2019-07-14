@@ -10,9 +10,9 @@ import Location from "../../components/Location/Location";
 
 function App() {
 	const [latitude, setLatitude] = useState(40.7128);
+	const [longitude, setLongitude] = useState(74.006);
 	const [northSouth, setNorthSouth] = useState("north");
 	const [eastWest, setEastWest] = useState("west");
-	const [longitude, setLongitude] = useState(74.006);
 	const [forecast, setForecast] = useState({});
 	const [error, setError] = useState(false);
 	const [initialized, setInitialized] = useState(false);

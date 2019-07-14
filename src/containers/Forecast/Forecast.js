@@ -44,7 +44,7 @@ const Forecast = ({ forecast, initialized }) => {
 	};
 
 	console.log(forecast);
-	if (Object.keys(forecast).length > 0 && forecast.icon) {
+	if (Object.keys(forecast).length > 0 && forecast.currently) {
 		return (
 			<div className="forecast">
 				<div className="location-name">
