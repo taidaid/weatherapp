@@ -1,4 +1,4 @@
-This project was created as a demo for Clockwork using Create-React-App, Dark-Sky-API, Opencage-API-client, and React-Smooth-Collapse.
+This project was created as a demo for Clockwork using Create-React-App, Dark-Sky-API, Opencage-API-Client, and React-Smooth-Collapse.
 The app can use your browser's Navigator API to get the gelocation of your device.
 It can also accept input latitude/longitude coordinates to get that local forecast.
 Or you can enter a place name to get a forecast.
