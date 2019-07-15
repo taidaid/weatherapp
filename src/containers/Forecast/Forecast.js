@@ -39,11 +39,9 @@ const Forecast = ({ forecast, initialized, units }) => {
       case "sleet":
         return <img src={cloudHail} alt="sleet" />;
       default:
-        console.log("unknown icon");
         return <img src={cloudSun} alt="cloud-sun" />;
     }
   };
-  console.log(forecast);
   if (Object.keys(forecast).length > 0 && forecast.currently) {
     return (
       <div className="forecast">

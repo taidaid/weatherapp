@@ -83,7 +83,6 @@ function App() {
   };
 
   const getForecast = coords => {
-    console.log("new coords", coords);
     if (navigator.onLine) {
       DarkSkyApi.loadItAll(null, {
         latitude: coords.latitude,

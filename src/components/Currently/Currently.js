@@ -18,8 +18,6 @@ const Currently = ({ forecast, getIcon, units }) => {
         <h6 className="summary">{forecast.summary}</h6>
       </div>
 
-      {/* {console.log("currently", forecast)} */}
-
       <SmoothCollapse
         expanded={currentlyExpanded}
         style={{ overflow: "visible" }}

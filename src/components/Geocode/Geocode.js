@@ -7,11 +7,9 @@ const Geocode = ({ apiKey, newLocationForecast, units, handleUnitChange }) => {
   const [queryResult, setQueryResult] = useState("");
 
   const getGeocode = () => {
-    console.log(locationQuery);
     opencage
       .geocode({ key: apiKey, q: locationQuery, language: "en" })
       .then(response => {
-        console.log(response);
         const newLatitude = response.results[0].geometry.lat;
         const newLongitude = response.results[0].geometry.lng;
         setQueryResult(`${newLatitude}, ${newLongitude}`);
