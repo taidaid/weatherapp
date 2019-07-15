@@ -2,21 +2,22 @@ import React, { useState } from "react";
 import "./Geocode.css";
 import opencage from "opencage-api-client";
 
-const Geocode = ({ apiKey, newLocationForecast, units, handleUnitChange }) => {
+const Geocode = ({ apiKey, getForecast, units, handleUnitChange }) => {
   const [locationQuery, setLocationQuery] = useState("");
   const [queryResult, setQueryResult] = useState("");
 
+  //gets the coordinates for the given name
   const getGeocode = () => {
     opencage
       .geocode({ key: apiKey, q: locationQuery, language: "en" })
       .then(response => {
-        const newLatitude = response.results[0].geometry.lat;
-        const newLongitude = response.results[0].geometry.lng;
-        setQueryResult(`${newLatitude}, ${newLongitude}`);
-        newLocationForecast({ newLatitude, newLongitude });
+        const latitude = response.results[0].geometry.lat;
+        const longitude = response.results[0].geometry.lng;
+        setQueryResult(`${latitude}, ${longitude}`);
+        getForecast({ latitude, longitude });
         return {
-          lat: newLatitude,
-          lng: newLongitude,
+          lat: latitude,
+          lng: longitude,
         };
       })
       .catch(error => {
@@ -25,6 +26,7 @@ const Geocode = ({ apiKey, newLocationForecast, units, handleUnitChange }) => {
       });
   };
 
+  //formats
   const displayQueryResult = () => {
     if (queryResult.length > 0 && queryResult !== "No results") {
       const queryResultArray = queryResult.split(",");

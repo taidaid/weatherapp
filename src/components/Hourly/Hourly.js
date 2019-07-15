@@ -5,6 +5,7 @@ import SmoothCollapse from "react-smooth-collapse";
 const Hourly = ({ forecast, getIcon, units }) => {
   const [hourlyExpanded, setHourlyExpanded] = useState(false);
 
+  //converts UNIX time into human-readable time
   const getHourFromUnixTime = unix_timestamp => {
     const date = new Date(unix_timestamp * 1000);
     const hours = date.getHours();

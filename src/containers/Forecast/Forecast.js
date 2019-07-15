@@ -16,6 +16,7 @@ import cloudHail from "../../assets/Cloud-Hail.svg";
 import "./Forecast.css";
 
 const Forecast = ({ forecast, initialized, units }) => {
+  //get the correct image according to the give icon input from the forecast
   const getIcon = icon => {
     switch (icon) {
       case "rain":
@@ -42,11 +43,10 @@ const Forecast = ({ forecast, initialized, units }) => {
         return <img src={cloudSun} alt="cloud-sun" />;
     }
   };
+  //check for empty object or falsey value
   if (Object.keys(forecast).length > 0 && forecast.currently) {
     return (
       <div className="forecast">
-        {/*Test for empty object in forecast state, if empty render null, otherwise, render forecasts*/}
-
         <Currently
           forecast={forecast.currently}
           getIcon={getIcon}
@@ -57,6 +57,7 @@ const Forecast = ({ forecast, initialized, units }) => {
       </div>
     );
   } else if (initialized) {
+    //if forecast object is empty and app is initalized, likely the forecast is loading
     return "Loading forecast...";
   } else {
     return null;
