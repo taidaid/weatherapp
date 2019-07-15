@@ -27,10 +27,6 @@
   align-items: center;
 }
 
-.cloud-cover {
-  font-size: 0.8em;
-}
-
 .daily-section-title {
   display: flex;
   flex-flow: row;
@@ -44,11 +40,8 @@
   font-size: 0.8em;
 }
 
-.day-temp-high {
-  font-size: 0.5em;
-}
-.day-temp-low {
-  font-size: 0.5em;
+.day-stats {
+  font-size: 0.6em;
 }
 
 @media only screen and (max-width: 768px) {

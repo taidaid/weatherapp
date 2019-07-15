@@ -48,15 +48,14 @@ const Forecast = ({ forecast, initialized, units }) => {
     return (
       <div className="forecast">
         {/*Test for empty object in forecast state, if empty render null, otherwise, render forecasts*/}
-        <div>
-          <Currently
-            forecast={forecast.currently}
-            getIcon={getIcon}
-            units={units}
-          />
-          <Hourly forecast={forecast.hourly} getIcon={getIcon} units={units} />
-          <Daily forecast={forecast.daily} getIcon={getIcon} units={units} />
-        </div>
+
+        <Currently
+          forecast={forecast.currently}
+          getIcon={getIcon}
+          units={units}
+        />
+        <Hourly forecast={forecast.hourly} getIcon={getIcon} units={units} />
+        <Daily forecast={forecast.daily} getIcon={getIcon} units={units} />
       </div>
     );
   } else if (initialized) {

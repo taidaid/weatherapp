@@ -2,3 +2,13 @@
   width: calc(80px + 2vmin);
   margin-left: 10px;
 }
+
+.local-container {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.local-container .input-fields {
+  width: 75%;
+}

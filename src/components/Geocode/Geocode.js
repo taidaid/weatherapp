@@ -68,7 +68,7 @@ const Geocode = ({ apiKey, newLocationForecast, units, handleUnitChange }) => {
           <label className="location-label" htmlFor="selecton-units">
             units:{" "}
           </label>
-          <div className="location-input-field" />
+
           <select
             className="select-units"
             id="selecton-units"

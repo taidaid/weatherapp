@@ -6,14 +6,14 @@ import Forecast from "../Forecast/Forecast";
 import Navbar from "../../components/Navbar/Navbar";
 
 //Provides the input for finding a location's forecast
-import Location from "../../components/Location/Location";
+import Location from "../Location/Location";
 
 function App() {
   const [latitude, setLatitude] = useState(40.7128);
   const [longitude, setLongitude] = useState(74.006);
   const [northSouth, setNorthSouth] = useState("north");
   const [eastWest, setEastWest] = useState("west");
-  const [units, setUnits] = useState("us");
+  const [units, setUnits] = useState("si");
   const [forecast, setForecast] = useState({});
   const [error, setError] = useState(false);
   const [initialized, setInitialized] = useState(false);

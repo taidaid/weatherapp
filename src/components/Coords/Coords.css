@@ -3,3 +3,9 @@
   flex-flow: column;
   justify-content: center;
 }
+
+@media only screen and (max-width: 768px) {
+  .coords-container {
+    width: 100%;
+  }
+}

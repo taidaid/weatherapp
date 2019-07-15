@@ -11,7 +11,9 @@ const Currently = ({ forecast, getIcon, units }) => {
         className="currently-section-title"
         onClick={() => setCurrentlyExpanded(!currentlyExpanded)}
       >
-        <h3>{currentlyExpanded ? "-" : "+"}Currently</h3>
+        <h3 className="section-title">
+          {currentlyExpanded ? "-" : "+"}Currently
+        </h3>
         {<div>{getIcon(forecast.icon)}</div>}
         <h6 className="summary">{forecast.summary}</h6>
       </div>

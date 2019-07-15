@@ -46,7 +46,7 @@ const Hourly = ({ forecast, getIcon, units }) => {
         className="hourly-section-title"
         onClick={() => setHourlyExpanded(!hourlyExpanded)}
       >
-        <h3>{hourlyExpanded ? "-" : "+"}Hourly</h3>
+        <h3 className="section-title">{hourlyExpanded ? "-" : "+"}Hourly</h3>
         {<div>{getIcon(forecast.icon)}</div>}
         <h6 className="summary">{forecast.summary}</h6>
       </div>

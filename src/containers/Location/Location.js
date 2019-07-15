@@ -18,15 +18,19 @@ const Location = ({
   handleUnitChange,
   units,
   apiKey,
+  clearCoords,
 }) => {
   const [geocodeExpanded, setGeocodeExpanded] = useState(true);
   const [coordsExpanded, setCoordsExpanded] = useState(false);
   const [localExpanded, setLocalExpanded] = useState(false);
 
   return (
-    <div className="location">
+    <div className="location-section">
       <div className="coords-container">
-        <h6 onClick={() => setCoordsExpanded(!coordsExpanded)}>
+        <h6
+          className="location-section-title"
+          onClick={() => setCoordsExpanded(!coordsExpanded)}
+        >
           {coordsExpanded ? "-" : "+"}Get Forecast by Coordinates
         </h6>
         <SmoothCollapse expanded={coordsExpanded}>
@@ -46,7 +50,10 @@ const Location = ({
         </SmoothCollapse>
       </div>
       <div className="geocode-container">
-        <h6 onClick={() => setGeocodeExpanded(!geocodeExpanded)}>
+        <h6
+          className="location-section-title"
+          onClick={() => setGeocodeExpanded(!geocodeExpanded)}
+        >
           {geocodeExpanded ? "-" : "+"}Get Forecast by Name
         </h6>
         <SmoothCollapse expanded={geocodeExpanded}>
@@ -59,10 +66,28 @@ const Location = ({
         </SmoothCollapse>
       </div>
       <div className="local-container">
-        <h6 onClick={() => setLocalExpanded(!localExpanded)}>
+        <h6
+          className="location-section-title"
+          onClick={() => setLocalExpanded(!localExpanded)}
+        >
           {localExpanded ? "-" : "+"}Get Your Local Forecast
         </h6>
         <SmoothCollapse expanded={localExpanded}>
+          <div className="input-fields">
+            <label className="location-label" htmlFor="selecton-units">
+              units:{" "}
+            </label>
+
+            <select
+              className="select-units"
+              id="selecton-units"
+              value={units}
+              onChange={e => handleUnitChange(e.target.value)}
+            >
+              <option value="us">US</option>
+              <option value="si">Metric</option>
+            </select>
+          </div>
           <button className="forecast-button" onClick={getLocalForecast}>
             Use My Location
           </button>
