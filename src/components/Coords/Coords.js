@@ -1,20 +1,21 @@
 import React from "react";
-import "./Location.css";
+import "./Coords.css";
 
-const Location = ({
+const Coords = ({
   latitude,
   longitude,
-  handleLatitudeChange,
-  handleLongitudeChange,
-  newLocationForecast,
-  getLocalForecast,
-  handleNorthSouthChange,
-  handleEastWestChange,
   northSouth,
   eastWest,
+  units,
+  handleLatitudeChange,
+  handleNorthSouthChange,
+  handleLongitudeChange,
+  handleEastWestChange,
+  handleUnitChange,
+  newLocationForecast,
 }) => {
   return (
-    <div className="location">
+    <div className="coords">
       <div className="location-input-container">
         <div className="location-input">
           <label className="location-label" htmlFor="latitude">
@@ -69,17 +70,29 @@ const Location = ({
             </select>
           </div>
         </div>
+        <div className="input-fields">
+          <label className="location-label" htmlFor="selecton-units">
+            units:{" "}
+          </label>
+
+          <select
+            className="select-units"
+            id="selecton-units"
+            value={units}
+            onChange={e => handleUnitChange(e.target.value)}
+          >
+            <option value="us">US</option>
+            <option value="si">Metric</option>
+          </select>
+        </div>
       </div>
       <div className="location-buttons">
         <button className="forecast-button" onClick={newLocationForecast}>
           Forecast
-        </button>
-        <button className="forecast-button" onClick={getLocalForecast}>
-          Use My Location
         </button>
       </div>
     </div>
   );
 };
 
-export default Location;
+export default Coords;

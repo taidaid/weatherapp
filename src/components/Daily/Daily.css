@@ -27,10 +27,6 @@
   align-items: center;
 }
 
-.cloud-cover {
-  font-size: 0.8em;
-}
-
 .daily-section-title {
   display: flex;
   flex-flow: row;
@@ -42,14 +38,10 @@
 
 .day-summary {
   font-size: 0.8em;
-  min-height: 60px;
 }
 
-.day-temp-high {
-  font-size: 0.5em;
-}
-.day-temp-low {
-  font-size: 0.5em;
+.day-stats {
+  font-size: 0.6em;
 }
 
 @media only screen and (max-width: 768px) {
@@ -57,7 +49,8 @@
     width: 50px;
     height: auto;
   }
-  .day-summary {
-    min-height: 110px;
+
+  .daily-description {
+    min-width: calc(33%);
   }
 }

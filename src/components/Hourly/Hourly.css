@@ -44,12 +44,7 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .hourly-precip-chance img {
-    width: 50px;
-    height: auto;
-  }
-
-  .hourly img {
+  .hourly-description img {
     width: 50px;
     height: auto;
   }

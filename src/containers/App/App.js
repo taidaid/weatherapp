@@ -4,16 +4,16 @@ import { getNavigatorCoords } from "geo-loc-utils";
 import "./App.css";
 import Forecast from "../Forecast/Forecast";
 import Navbar from "../../components/Navbar/Navbar";
-import Geocode from "../../components/Geocode/Geocode";
 
 //Provides the input for finding a location's forecast
-import Location from "../../components/Location/Location";
+import Location from "../Location/Location";
 
 function App() {
   const [latitude, setLatitude] = useState(40.7128);
   const [longitude, setLongitude] = useState(74.006);
   const [northSouth, setNorthSouth] = useState("north");
   const [eastWest, setEastWest] = useState("west");
+  const [units, setUnits] = useState("si");
   const [forecast, setForecast] = useState({});
   const [error, setError] = useState(false);
   const [initialized, setInitialized] = useState(false);
@@ -78,15 +78,32 @@ function App() {
     setEastWest(direction);
   };
 
+  const handleUnitChange = units => {
+    setUnits(units);
+  };
+
   const getForecast = coords => {
-    console.log("new coords", coords);
     if (navigator.onLine) {
       DarkSkyApi.loadItAll(null, {
         latitude: coords.latitude,
         longitude: coords.longitude,
+        units: units,
       })
         .then(result => {
           setError(false);
+          setLatitude(coords.latitude);
+          setLongitude(coords.longitude);
+          //uses north/south and east/west state to make latitude/longitude correspondingly positive/negative for api call
+          if (coords.latitude < 0) {
+            setNorthSouth("south");
+          } else if (coords.latitude >= 0) {
+            setNorthSouth("north");
+          }
+          if (coords.longitude < 0) {
+            setEastWest("west");
+          } else if (coords.longitude >= 0) {
+            setEastWest("east");
+          }
           setForecast(result);
         })
         .catch(error => {
@@ -99,18 +116,21 @@ function App() {
   };
 
   //set a new forecast state using location state
-  const newLocationForecast = () => {
-    let latitudeForForecast = latitude;
-    let longitudeForForecast = longitude;
+  const newLocationForecast = ({
+    newLatitude = latitude,
+    newLongitude = longitude,
+  }) => {
+    // let latitudeForForecast = newLatitude;
+    // let longitudeForForecast = newLongitude;
     if (northSouth === "south" && latitude > 0) {
-      latitudeForForecast = latitudeForForecast * -1;
+      newLatitude = newLatitude * -1;
     }
     if (eastWest === "west" && longitude > 0) {
-      longitudeForForecast = longitudeForForecast * -1;
+      newLongitude = newLongitude * -1;
     }
     getForecast({
-      latitude: latitudeForForecast,
-      longitude: longitudeForForecast,
+      latitude: newLatitude,
+      longitude: newLongitude,
     });
     setInitialized(true);
   };
@@ -133,8 +153,11 @@ function App() {
           handleEastWestChange={handleEastWestChange}
           northSouth={northSouth}
           eastWest={eastWest}
+          handleUnitChange={handleUnitChange}
+          units={units}
+          apiKey={geocodeApiKey}
         />
-        <Geocode apiKey={geocodeApiKey} />
+
         {/*Provides guidance before first use */}
         {initialized ? null : (
           <p>
@@ -152,7 +175,11 @@ function App() {
             refreshing the page.
           </p>
         ) : (
-          <Forecast forecast={forecast} initialized={initialized} />
+          <Forecast
+            forecast={forecast}
+            initialized={initialized}
+            units={units}
+          />
         )}
       </div>
     </div>
