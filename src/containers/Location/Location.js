@@ -18,7 +18,7 @@ const Location = ({
   handleUnitChange,
   units,
   apiKey,
-  clearCoords,
+  getForecast,
 }) => {
   const [geocodeExpanded, setGeocodeExpanded] = useState(true);
   const [coordsExpanded, setCoordsExpanded] = useState(false);
@@ -59,7 +59,7 @@ const Location = ({
         <SmoothCollapse expanded={geocodeExpanded}>
           <Geocode
             apiKey={apiKey}
-            newLocationForecast={newLocationForecast}
+            getForecast={getForecast}
             units={units}
             handleUnitChange={handleUnitChange}
           />
