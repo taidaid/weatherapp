@@ -60,6 +60,10 @@
   justify-content: center;
 }
 
+.local-container {
+  align-items: center;
+}
+
 @media only screen and (max-width: 768px) {
   .location {
     display: flex;
@@ -67,6 +71,11 @@
     margin-top: 20px;
     padding: 10px 20px;
     width: calc(100% - 80px);
+  }
+
+  .location-section {
+    flex-flow: column;
+    align-items: center;
   }
   .forecast-button {
     margin: 20px 20px;
@@ -77,9 +86,10 @@
   }
 
   .location-label {
-    width: 33%;
+    min-width: 25%;
   }
   .select-direction {
+    min-width: 25%;
     width: calc(30px + 2vmin);
   }
 }
