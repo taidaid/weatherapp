@@ -1,19 +1,18 @@
 .location {
   display: flex;
-  flex-flow: column;
-  justify-content: center;
+  flex-flow: row;
+  justify-content: space-between;
   align-items: center;
   box-shadow: 0 1px 5px black;
-
   max-width: 100%;
-  margin-top: 20px;
-  margin-bottom: 5px;
+  margin: 20px 0;
   padding: 20px 40px;
 }
 
 .location-input-container {
   display: flex;
   flex-flow: column;
+
   align-items: center;
   width: 100%;
   padding: 10px;
@@ -39,11 +38,11 @@
 }
 .location-input-field {
   margin: 20px 5px 20px 20px;
-  width: calc(60px + 2vmin);
+  width: calc(40px + 2vmin);
 }
 
 .select-direction {
-  width: calc(30px + 2vmin);
+  width: calc(20px + 2vmin);
 }
 
 .location-buttons {

@@ -42,7 +42,6 @@
 
 .day-summary {
   font-size: 0.8em;
-  min-height: 60px;
 }
 
 .day-temp-high {
@@ -57,7 +56,8 @@
     width: 50px;
     height: auto;
   }
-  .day-summary {
-    min-height: 110px;
+
+  .daily-description {
+    min-width: calc(33%);
   }
 }

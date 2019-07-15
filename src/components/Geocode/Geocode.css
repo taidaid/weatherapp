@@ -1,0 +1,4 @@
+.geocode-input-field {
+  width: calc(80px + 2vmin);
+  margin-left: 10px;
+}

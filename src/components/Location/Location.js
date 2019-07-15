@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Location.css";
+import SmoothCollapse from "react-smooth-collapse";
+import Geocode from "../../components/Geocode/Geocode";
+import Coords from "../../components/Coords/Coords";
 
 const Location = ({
   latitude,
@@ -12,71 +15,58 @@ const Location = ({
   handleEastWestChange,
   northSouth,
   eastWest,
+  handleUnitChange,
+  units,
+  apiKey,
 }) => {
+  const [geocodeExpanded, setGeocodeExpanded] = useState(true);
+  const [coordsExpanded, setCoordsExpanded] = useState(false);
+  const [localExpanded, setLocalExpanded] = useState(false);
+
   return (
     <div className="location">
-      <div className="location-input-container">
-        <div className="location-input">
-          <label className="location-label" htmlFor="latitude">
-            latitude:{" "}
-          </label>
-          <div className="input-fields">
-            <input
-              className="location-input-field"
-              type="number"
-              value={latitude}
-              maxLength="7"
-              size="7"
-              name="latitude"
-              id="latitude"
-              onChange={e => handleLatitudeChange(e.target.value)}
-            />
-            <select
-              className="select-direction"
-              id="selecton-north-south"
-              value={northSouth}
-              onChange={e => handleNorthSouthChange(e.target.value)}
-            >
-              <option value="north">N</option>
-              <option value="south">S</option>
-            </select>
-          </div>
-        </div>
-
-        <div className="location-input">
-          <label className="location-label" htmlFor="longitude">
-            longitude:{" "}
-          </label>
-          <div className="input-fields">
-            <input
-              className="location-input-field"
-              type="number"
-              value={longitude}
-              maxLength="7"
-              size="7"
-              name="longitude"
-              id="longitude"
-              onChange={e => handleLongitudeChange(e.target.value)}
-            />{" "}
-            <select
-              className="select-direction"
-              id="selecton-east-west"
-              value={eastWest}
-              onChange={e => handleEastWestChange(e.target.value)}
-            >
-              <option value="west">W</option>
-              <option value="east">E</option>
-            </select>
-          </div>
-        </div>
+      <div className="coords-container">
+        <h6 onClick={() => setCoordsExpanded(!coordsExpanded)}>
+          {coordsExpanded ? "-" : "+"}Get Forecast by Coordinates
+        </h6>
+        <SmoothCollapse expanded={coordsExpanded}>
+          <Coords
+            latitude={latitude}
+            longitude={longitude}
+            northSouth={northSouth}
+            eastWest={eastWest}
+            units={units}
+            handleLatitudeChange={handleLatitudeChange}
+            handleNorthSouthChange={handleNorthSouthChange}
+            handleLongitudeChange={handleLongitudeChange}
+            handleEastWestChange={handleEastWestChange}
+            handleUnitChange={handleUnitChange}
+            newLocationForecast={newLocationForecast}
+          />
+        </SmoothCollapse>
       </div>
-      <div className="location-buttons">
-        <button className="forecast-button" onClick={newLocationForecast}>
-          Forecast
-        </button>
-        <button className="forecast-button" onClick={getLocalForecast}>
-          Use My Location
-        </button>
+      <div className="geocode-container">
+        <h6 onClick={() => setGeocodeExpanded(!geocodeExpanded)}>
+          {geocodeExpanded ? "-" : "+"}Get Forecast by Name
+        </h6>
+        <SmoothCollapse expanded={geocodeExpanded}>
+          <Geocode
+            apiKey={apiKey}
+            newLocationForecast={newLocationForecast}
+            units={units}
+            handleUnitChange={handleUnitChange}
+          />
+        </SmoothCollapse>
+      </div>
+      <div className="local-container">
+        <h6 onClick={() => setLocalExpanded(!localExpanded)}>
+          {localExpanded ? "-" : "+"}Get Your Local Forecast
+        </h6>
+        <SmoothCollapse expanded={localExpanded}>
+          <button className="forecast-button" onClick={getLocalForecast}>
+            Use My Location
+          </button>
+        </SmoothCollapse>
       </div>
     </div>
   );

@@ -1,25 +1,10 @@
 import React, { useState } from "react";
+import "./Geocode.css";
 import opencage from "opencage-api-client";
 
-const Geocode = ({ apiKey }) => {
-  //   const [latitude, setLatitude] = useState(40.7128);
-  //   const [longitude, setLongitude] = useState(74.006);
-  //   const [northSouth, setNorthSouth] = useState("north");
-  //   const [eastWest, setEastWest] = useState("west");
+const Geocode = ({ apiKey, newLocationForecast, units, handleUnitChange }) => {
   const [locationQuery, setLocationQuery] = useState("");
   const [queryResult, setQueryResult] = useState("");
-
-  //   const handleNorthSouthEastWestValueChanges = () => {
-  //     let latitudeForGeocode = latitude;
-  //     let longitudeForGeocode = longitude;
-  //     if (northSouth === "south" && latitude > 0) {
-  //       latitudeForGeocode = latitudeForGeocode * -1;
-  //     }
-  //     if (eastWest === "west" && longitude > 0) {
-  //       longitudeForGeocode = longitudeForGeocode * -1;
-  //     }
-  //     return { latitudeForGeocode, longitudeForGeocode };
-  //   };
 
   const getGeocode = () => {
     console.log(locationQuery);
@@ -27,14 +12,13 @@ const Geocode = ({ apiKey }) => {
       .geocode({ key: apiKey, q: locationQuery, language: "en" })
       .then(response => {
         console.log(response);
-        setQueryResult(
-          `${response.results[0].geometry.lat}, ${
-            response.results[0].geometry.lng
-          }`
-        );
+        const newLatitude = response.results[0].geometry.lat;
+        const newLongitude = response.results[0].geometry.lng;
+        setQueryResult(`${newLatitude}, ${newLongitude}`);
+        newLocationForecast({ newLatitude, newLongitude });
         return {
-          lat: response.results[0].geometry.lat,
-          lng: response.results[0].geometry.lng,
+          lat: newLatitude,
+          lng: newLongitude,
         };
       })
       .catch(error => {
@@ -63,16 +47,15 @@ const Geocode = ({ apiKey }) => {
   };
 
   return (
-    <div className="location">
+    <div className="geocode">
       <div className="location-input-container">
-        <h6>Find coordinates for a location</h6>
         <div className="location-input">
           <label className="location-label" htmlFor="location">
             location:{" "}
           </label>
           <div className="input-fields">
             <input
-              className="location-input-field"
+              className="geocode-input-field"
               type="text"
               value={locationQuery}
               name="location"
@@ -81,18 +64,33 @@ const Geocode = ({ apiKey }) => {
             />
           </div>
         </div>
+        <div className="input-fields">
+          <label className="location-label" htmlFor="selecton-units">
+            units:{" "}
+          </label>
+          <div className="location-input-field" />
+          <select
+            className="select-units"
+            id="selecton-units"
+            value={units}
+            onChange={e => handleUnitChange(e.target.value)}
+          >
+            <option value="us">US</option>
+            <option value="si">Metric</option>
+          </select>
+        </div>
       </div>
       {displayQueryResult() ? (
-        <p>
+        <h6>
           {displayQueryResult()[0]}, {displayQueryResult()[1]}
-        </p>
+        </h6>
       ) : (
         queryResult
       )}
 
       <div className="location-buttons">
         <button className="forecast-button" onClick={getGeocode}>
-          Get Coordinates
+          Get Forecast
         </button>
       </div>
     </div>
