@@ -60,7 +60,6 @@ function App() {
 
   //gets all forecast info from provided lat/long via Dark-Sky-Api
   const getForecast = coords => {
-    console.log(coords);
     DarkSkyApi.loadItAll(null, {
       latitude: coords.latitude,
       longitude: coords.longitude,
