@@ -1,3 +1,7 @@
+.daily {
+  margin-top: 20px;
+}
+
 .daily-forecasts {
   display: flex;
   flex-flow: row;
@@ -20,6 +24,10 @@
   align-items: center;
 }
 
+.cloud-cover {
+  font-size: 0.8em;
+}
+
 .daily-section-title {
   display: flex;
   flex-flow: row;
@@ -39,4 +47,14 @@
 }
 .day-temp-low {
   font-size: 0.5em;
+}
+
+@media only screen and (max-width: 768px) {
+  .day-precip-chance img {
+    width: 50px;
+    height: auto;
+  }
+  .day-summary {
+    min-height: 110px;
+  }
 }

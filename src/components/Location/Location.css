@@ -1,10 +1,11 @@
 .location {
   display: flex;
-  flex-flow: row;
+  flex-flow: column;
   justify-content: center;
   align-items: center;
   box-shadow: 0 1px 5px black;
 
+  max-width: 100%;
   margin-top: 20px;
   margin-bottom: 5px;
   padding: 20px 40px;
@@ -13,39 +14,58 @@
 .location-input-container {
   display: flex;
   flex-flow: column;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
 }
 .location-label {
-  width: 80px;
+  width: 50%;
+  text-align: right;
 }
 
 .location-input {
   display: flex;
   flex-flow: row;
+  width: 100%;
   align-items: center;
-  justify-content: space-between;
+}
+
+.input-fields {
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 50%;
 }
 .location-input-field {
-  margin-left: 20px;
-  width: 25%;
+  margin: 20px 5px 20px 20px;
+  width: calc(60px + 2vmin);
 }
 
 .select-direction {
-  width: 40px;
+  width: calc(30px + 2vmin);
+}
+
+.location-buttons {
+  display: flex;
+  flex-flow: row;
 }
 .forecast-button {
   margin-left: 20px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
   .location {
     display: flex;
     flex-flow: column;
     margin-top: 20px;
+    padding: 10px 20px;
+    width: 100%;
   }
   .forecast-button {
     margin: 20px 20px;
   }
-  .location-input-field {
-    margin: 20px;
+  .location-label {
+    text-align: center;
   }
 }
