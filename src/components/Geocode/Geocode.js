@@ -61,13 +61,13 @@ const Geocode = ({
           </div>
         </div>
         <div className="input-fields">
-          <label className="location-label" htmlFor="selecton-units">
+          <label className="location-label" htmlFor="geocode-selection-units">
             units:{" "}
           </label>
 
           <select
             className="select-units"
-            id="selecton-units"
+            id="geocode-selection-units"
             value={units}
             onChange={e => handleUnitChange(e.target.value)}
           >

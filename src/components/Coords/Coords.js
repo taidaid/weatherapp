@@ -123,13 +123,13 @@ const Coords = ({
           </div>
         </div>
         <div className="input-fields">
-          <label className="location-label" htmlFor="selecton-units">
+          <label className="location-label" htmlFor="coords-selecton-units">
             units:{" "}
           </label>
 
           <select
             className="select-units"
-            id="selecton-units"
+            id="coords-selecton-units"
             value={units}
             onChange={e => handleUnitChange(e.target.value)}
           >
