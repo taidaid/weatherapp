@@ -22,7 +22,7 @@ const Location = ({
 }) => {
   const [geocodeExpanded, setGeocodeExpanded] = useState(true);
   const [coordsExpanded, setCoordsExpanded] = useState(false);
-  const [localExpanded, setLocalExpanded] = useState(false);
+  const [localExpanded, setLocalExpanded] = useState(true);
 
   return (
     <div className="location-section">

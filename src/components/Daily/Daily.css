@@ -44,7 +44,7 @@
   font-size: 0.6em;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
   .day-precip-chance img {
     width: 50px;
     height: auto;
