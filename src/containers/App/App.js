@@ -159,9 +159,8 @@ function App() {
          */}
         {error ? (
           <p>
-            There was an error getting your forecast. Try entering new
-            latitude/longitude numbers and then clicking 'Forecast' or
-            refreshing the page.
+            There was an error getting your forecast. Try entering new info and
+            then clicking 'Forecast' or refreshing the page.
           </p>
         ) : (
           <Forecast
