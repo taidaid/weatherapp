@@ -25,16 +25,16 @@ const Hourly = ({ forecast, getIcon, units }) => {
         <p className="hourly-summary">{hour.summary}</p>
         <div className="hourly-precip-chance">
           <div className="day-precip-chance-text  ">
-            Rain: {Math.floor(hour.precipProbability * 100)}%
+            Rain: {Math.round(hour.precipProbability * 100)}%
           </div>
         </div>
 
         <p className="hourly-temp">
           Temp.:{" "}
           {units === "us" ? (
-            <>{Math.floor(hour.temperature)}°F</>
+            <>{Math.round(hour.temperature)}°F</>
           ) : (
-            <>{Math.floor(((hour.temperature - 32) * 5) / 9)}°C</>
+            <>{Math.round(((hour.temperature - 32) * 5) / 9)}°C</>
           )}
         </p>
       </div>

@@ -26,17 +26,17 @@ const Currently = ({ forecast, getIcon, units }) => {
           <div className="descriptor">
             Temperature:{" "}
             {units === "us" ? (
-              <>{Math.floor(forecast.temperature)}°F</>
+              <>{Math.round(forecast.temperature)}°F</>
             ) : (
-              <>{Math.floor(((forecast.temperature - 32) * 5) / 9)}°C</>
+              <>{Math.round(((forecast.temperature - 32) * 5) / 9)}°C</>
             )}
           </div>
           <div className="descriptor">
-            Humidity: {Math.floor(forecast.humidity * 100)}%
+            Humidity: {Math.round(forecast.humidity * 100)}%
           </div>
           <div className="descriptor">
             Chance of Precipitation:{" "}
-            {Math.floor(forecast.precipProbability * 100)}%
+            {Math.round(forecast.precipProbability * 100)}%
           </div>
 
           {forecast.precipType ? (
@@ -51,17 +51,17 @@ const Currently = ({ forecast, getIcon, units }) => {
           <div className="descriptor">
             Wind Gust:{" "}
             {units === "us" ? (
-              <>{Math.floor(forecast.windGust)}mph</>
+              <>{Math.round(forecast.windGust)}mph</>
             ) : (
-              <>{Math.floor(forecast.windGust * 0.44704)}mps</>
+              <>{Math.round(forecast.windGust * 0.44704)}mps</>
             )}
           </div>
           <div className="descriptor">
             Wind Speed:{" "}
             {units === "us" ? (
-              <>{Math.floor(forecast.windSpeed)}mph</>
+              <>{Math.round(forecast.windSpeed)}mph</>
             ) : (
-              <>{Math.floor(forecast.windSpeed * 0.44704)}mps</>
+              <>{Math.round(forecast.windSpeed * 0.44704)}mps</>
             )}
           </div>
         </div>
