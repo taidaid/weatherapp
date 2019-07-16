@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Coords.css";
+import opencage from "opencage-api-client";
 
 const Coords = ({
   latitude,
@@ -13,9 +14,61 @@ const Coords = ({
   handleEastWestChange,
   handleUnitChange,
   newLocationForecast,
+  apiKey,
+  getConfidenceLevel,
 }) => {
+  const [queryResultName, setQueryResultName] = useState("");
+  const [confidenceLevel, setConfidenceLevel] = useState("");
+
+  //experimental api: use the lat/long coords to attempt an location name lookup
+  const getForwardGeocode = () => {
+    let newLatitude = latitude;
+    let newLongitude = longitude;
+    //the APIs use positive/negative rather than north/south and east/west.
+    //accounts for making lat/long positive/negative according to north/south and east/west state
+    newLocationForecast({ newLatitude, newLongitude });
+    if (northSouth === "south" && latitude > 0) {
+      newLatitude = newLatitude * -1;
+    }
+    if (eastWest === "west" && longitude > 0) {
+      newLongitude = newLongitude * -1;
+    }
+    console.log("geocode: ", newLatitude, newLongitude);
+    opencage
+      .geocode({
+        key: apiKey,
+        q: `${newLatitude}+${newLongitude}`,
+        language: "en",
+      })
+      .then(response => {
+        console.log(response);
+        const latitude = response.results[0].geometry.lat || null;
+        const longitude = response.results[0].geometry.lng || null;
+        const city =
+          response.results[0].components.city ||
+          response.results[0].components.unknown ||
+          "unknown";
+        const state = response.results[0].components.state;
+        const country = response.results[0].components.country;
+        const newConfidenceLevel = getConfidenceLevel(
+          response.results[0].confidence
+        );
+        setConfidenceLevel(newConfidenceLevel);
+        setQueryResultName(`${city}, ${state}, ${country}`);
+
+        return {
+          lat: latitude,
+          lng: longitude,
+        };
+      })
+      .catch(error => {
+        setQueryResultName("No results");
+        console.log(error);
+      });
+  };
+
   return (
-    <div className="coords">
+    <>
       <div className="location-input-container">
         <div className="location-input">
           <label className="location-label" htmlFor="latitude">
@@ -86,12 +139,18 @@ const Coords = ({
           </select>
         </div>
       </div>
+      {queryResultName.length > 0 ? (
+        <div className="geocode-query-result">
+          Experimental: <p>{queryResultName}</p>
+          {confidenceLevel}
+        </div>
+      ) : null}
       <div className="location-buttons">
-        <button className="forecast-button" onClick={newLocationForecast}>
+        <button className="forecast-button" onClick={getForwardGeocode}>
           Forecast
         </button>
       </div>
-    </div>
+    </>
   );
 };
 
