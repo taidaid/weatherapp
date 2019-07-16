@@ -12,7 +12,6 @@
 .location-input-container {
   display: flex;
   flex-flow: column;
-
   align-items: center;
   width: 100%;
   padding: 10px;
@@ -26,7 +25,9 @@
   display: flex;
   flex-flow: row;
   min-width: 100%;
+  min-height: 60px;
   align-items: center;
+  justify-content: center;
 }
 
 .input-fields {
@@ -35,9 +36,10 @@
   justify-content: flex-start;
   align-items: center;
   min-width: 50%;
+  min-height: 60px;
 }
 .location-input-field {
-  margin: 20px 5px 20px 5px;
+  margin: 22px 5px 20px 5px;
   width: calc(60px + 2vmin);
 }
 
@@ -46,12 +48,13 @@
 }
 
 .select-units {
-  margin-left: 10px;
+  margin: 5px 0 0 10px;
   width: calc(50px + 2vmin);
 }
 
 .location-section-title {
   cursor: pointer;
+  font-size: 0.75em;
 }
 
 .location-buttons {
@@ -60,8 +63,12 @@
   justify-content: center;
 }
 
-.local-container {
+.location-container {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
   align-items: center;
+  max-width: 33%;
 }
 
 @media only screen and (max-width: 992px) {
@@ -76,6 +83,11 @@
   .location-section {
     flex-flow: column;
     align-items: center;
+    min-width: 80%;
+  }
+
+  .smooth-collapse {
+    min-width: 100%;
   }
   .forecast-button {
     margin: 20px 20px;
@@ -86,10 +98,29 @@
   }
 
   .location-label {
-    min-width: 25%;
+    min-width: 33%;
   }
   .select-direction {
     min-width: 25%;
     width: calc(30px + 2vmin);
+  }
+
+  .location-container {
+    min-width: 100%;
+    border-top: 1px black solid;
+    border-bottom: 1px black solid;
+  }
+
+  .input-fields {
+    min-width: 66%;
+  }
+
+  .location-input-field {
+    margin: 22px 5px 20px 5px;
+    width: calc(80px + 2vmin);
+  }
+
+  .select-units {
+    width: calc(60px + 2vmin);
   }
 }

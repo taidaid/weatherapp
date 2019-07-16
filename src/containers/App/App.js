@@ -89,6 +89,7 @@ function App() {
     if (eastWest === "west" && longitude > 0) {
       newLongitude = newLongitude * -1;
     }
+    console.log("coords: ", newLatitude, newLongitude);
     getForecast({
       latitude: newLatitude,
       longitude: newLongitude,

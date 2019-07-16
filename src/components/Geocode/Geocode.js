@@ -2,16 +2,22 @@ import React, { useState } from "react";
 import "./Geocode.css";
 import opencage from "opencage-api-client";
 
-const Geocode = ({ apiKey, getForecast, units, handleUnitChange }) => {
+const Geocode = ({
+  apiKey,
+  getForecast,
+  units,
+  handleUnitChange,
+  getConfidenceLevel,
+}) => {
   const [locationQuery, setLocationQuery] = useState("");
   const [queryResultName, setQueryResultName] = useState("");
+  const [confidenceLevel, setConfidenceLevel] = useState("");
 
-  //gets the coordinates for the given name
-  const getGeocode = () => {
+  //experimental api: gets the coordinates for the given name
+  const getReverseGeocode = () => {
     opencage
       .geocode({ key: apiKey, q: locationQuery, language: "en" })
       .then(response => {
-        console.log(response);
         const latitude = response.results[0].geometry.lat;
         const longitude = response.results[0].geometry.lng;
         const city =
@@ -19,6 +25,10 @@ const Geocode = ({ apiKey, getForecast, units, handleUnitChange }) => {
           response.results[0].components.unknown;
         const state = response.results[0].components.state;
         const country = response.results[0].components.country;
+        const newConfidenceLevel = getConfidenceLevel(
+          response.results[0].confidence
+        );
+        setConfidenceLevel(newConfidenceLevel);
         setQueryResultName(`${city}, ${state}, ${country}`);
         getForecast({ latitude, longitude });
         return {
@@ -32,28 +42,8 @@ const Geocode = ({ apiKey, getForecast, units, handleUnitChange }) => {
       });
   };
 
-  // //formats
-  // const displayQueryResult = () => {
-  //   if (queryResultName.length > 0 && queryResultName !== "No results") {
-  //     const queryResultArray = queryResult.split(",");
-  //     //display latitude result
-  //     const latitude =
-  //       queryResultArray[0] > 0
-  //         ? `${queryResultArray[0]}°N`
-  //         : `${queryResultArray[0]}°S`;
-  //     //display longitude result
-  //     const longitude =
-  //       queryResultArray[1] > 0
-  //         ? `${queryResultArray[1]}°E`
-  //         : `${queryResultArray[1]}°W`;
-  //     return [latitude, longitude];
-  //   } else {
-  //     return null;
-  //   }
-  // };
-
   return (
-    <div className="geocode">
+    <>
       <div className="location-input-container">
         <div className="location-input">
           <label className="location-label" htmlFor="location">
@@ -61,7 +51,7 @@ const Geocode = ({ apiKey, getForecast, units, handleUnitChange }) => {
           </label>
           <div className="input-fields">
             <input
-              className="geocode-input-field"
+              className="location-input-field"
               type="text"
               value={locationQuery}
               name="location"
@@ -86,14 +76,19 @@ const Geocode = ({ apiKey, getForecast, units, handleUnitChange }) => {
           </select>
         </div>
       </div>
-      {queryResultName.length > 0 ? <h6>{queryResultName}</h6> : null}
+      {queryResultName.length > 0 ? (
+        <div className="geocode-query-result">
+          Experimental: <p>{queryResultName}</p>
+          {confidenceLevel}
+        </div>
+      ) : null}
 
       <div className="location-buttons">
-        <button className="forecast-button" onClick={getGeocode}>
+        <button className="forecast-button" onClick={getReverseGeocode}>
           Get Forecast
         </button>
       </div>
-    </div>
+    </>
   );
 };
 
