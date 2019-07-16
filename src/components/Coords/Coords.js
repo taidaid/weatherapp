@@ -33,7 +33,7 @@ const Coords = ({
     if (eastWest === "west" && longitude > 0) {
       newLongitude = newLongitude * -1;
     }
-    console.log("geocode: ", newLatitude, newLongitude);
+
     opencage
       .geocode({
         key: apiKey,
@@ -41,7 +41,6 @@ const Coords = ({
         language: "en",
       })
       .then(response => {
-        console.log(response);
         const latitude = response.results[0].geometry.lat || null;
         const longitude = response.results[0].geometry.lng || null;
         const city =

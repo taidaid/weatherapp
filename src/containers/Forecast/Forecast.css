@@ -10,6 +10,10 @@
   padding-right: 10px;
 }
 
+.summary {
+  text-align: left;
+}
+
 @media only screen and (max-width: 992px) {
   .forecast {
     box-shadow: 0 0 0;
