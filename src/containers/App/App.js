@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import DarkSkyApi from "dark-sky-api";
 import { getNavigatorCoords } from "geo-loc-utils";
 import "./App.css";
-import Forecast from "../Forecast/Forecast";
+
 import Navbar from "../../components/Navbar/Navbar";
 import Location from "../Location/Location";
 
@@ -20,6 +20,7 @@ function App() {
   //ordinarily these api keys would be hidden via a proxy, but as this is a demo for a front-end team, a back-end was out-of-scope
   const geocodeApiKey = "52634dba53ab47f683a9fbb0f11942ec";
   DarkSkyApi.apiKey = "dd94891f9307a1083ce9200cc07c0448";
+  const Forecast = React.lazy(() => import("../Forecast/Forecast"));
 
   //provide a loading screen while component mounts
   useEffect(() => {
@@ -163,11 +164,13 @@ function App() {
             then clicking 'Forecast' or refreshing the page.
           </p>
         ) : (
-          <Forecast
-            forecast={forecast}
-            initialized={initialized}
-            units={units}
-          />
+          <React.Suspense fallback={<h6>Loading Forecast...</h6>}>
+            <Forecast
+              forecast={forecast}
+              initialized={initialized}
+              units={units}
+            />
+          </React.Suspense>
         )}
       </div>
     </div>
