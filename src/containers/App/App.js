@@ -151,8 +151,8 @@ function App() {
         {initialized ? null : (
           <p>
             Try entering some numbers for the latitude and longitude and
-            clicking 'Forecast'. Or you can click 'Use My Location' to get your
-            local forecast.
+            clicking 'Forecast', entering the name of a place, or you can click
+            'Use My Location' to get your local forecast.
           </p>
         )}
         {/* Displays the forecast results for the given location or an error message
