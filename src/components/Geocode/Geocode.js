@@ -3,93 +3,92 @@ import "./Geocode.css";
 import opencage from "opencage-api-client";
 
 const Geocode = ({
-  apiKey,
-  getForecast,
-  units,
-  handleUnitChange,
-  getConfidenceLevel,
+	apiKey,
+	getForecast,
+	units,
+	handleUnitChange,
+	getConfidenceLevel
 }) => {
-  const [locationQuery, setLocationQuery] = useState("");
-  const [queryResultName, setQueryResultName] = useState("");
-  const [confidenceLevel, setConfidenceLevel] = useState("");
+	const [locationQuery, setLocationQuery] = useState("");
+	const [queryResultName, setQueryResultName] = useState("");
+	const [confidenceLevel, setConfidenceLevel] = useState("");
 
-  //experimental api: gets the coordinates for the given name
-  const getReverseGeocode = () => {
-    opencage
-      .geocode({ key: apiKey, q: locationQuery, language: "en" })
-      .then(response => {
-        const latitude = response.results[0].geometry.lat;
-        const longitude = response.results[0].geometry.lng;
-        const city =
-          response.results[0].components.city ||
-          response.results[0].components.unknown;
-        const state = response.results[0].components.state;
-        const country = response.results[0].components.country;
-        const newConfidenceLevel = getConfidenceLevel(
-          response.results[0].confidence
-        );
-        setConfidenceLevel(newConfidenceLevel);
-        setQueryResultName(`${city}, ${state}, ${country}`);
-        getForecast({ latitude, longitude });
-        return {
-          lat: latitude,
-          lng: longitude,
-        };
-      })
-      .catch(error => {
-        setQueryResultName("No results");
-        console.log(error);
-      });
-  };
+	//experimental api: gets the coordinates for the given name
+	const getReverseGeocode = e => {
+		e.preventDefault();
+		opencage
+			.geocode({ key: apiKey, q: locationQuery, language: "en" })
+			.then(response => {
+				const latitude = response.results[0].geometry.lat;
+				const longitude = response.results[0].geometry.lng;
+				const city =
+					response.results[0].components.city ||
+					response.results[0].components.unknown;
+				const state = response.results[0].components.state;
+				const country = response.results[0].components.country;
+				const newConfidenceLevel = getConfidenceLevel(
+					response.results[0].confidence
+				);
+				setConfidenceLevel(newConfidenceLevel);
+				setQueryResultName(`${city}, ${state}, ${country}`);
+				getForecast({ latitude, longitude });
+				return {
+					lat: latitude,
+					lng: longitude
+				};
+			})
+			.catch(error => {
+				setQueryResultName("No results");
+				console.log(error);
+			});
+	};
 
-  return (
-    <>
-      <div className="location-input-container">
-        <div className="location-input">
-          <label className="location-label" htmlFor="location">
-            location:{" "}
-          </label>
-          <div className="input-fields">
-            <input
-              className="location-input-field"
-              type="text"
-              value={locationQuery}
-              name="location"
-              id="location"
-              onChange={e => setLocationQuery(e.target.value)}
-            />
-          </div>
-        </div>
-        <div className="input-fields">
-          <label className="location-label" htmlFor="geocode-selection-units">
-            units:{" "}
-          </label>
+	return (
+		<form onSubmit={e => getReverseGeocode(e)}>
+			<div className="location-input-container">
+				<div className="geocode-location-input">
+					<label className="location-label" htmlFor="location">
+						location:{" "}
+					</label>
+					<div className="geocode-input-fields">
+						<input
+							className="location-input-field"
+							type="text"
+							value={locationQuery}
+							name="location"
+							id="location"
+							onChange={e => setLocationQuery(e.target.value)}
+						/>
+					</div>
+				</div>
+				<div className="input-fields">
+					<label className="location-label" htmlFor="geocode-selection-units">
+						units:{" "}
+					</label>
 
-          <select
-            className="select-units"
-            id="geocode-selection-units"
-            value={units}
-            onChange={e => handleUnitChange(e.target.value)}
-          >
-            <option value="us">US</option>
-            <option value="si">Metric</option>
-          </select>
-        </div>
-      </div>
-      {queryResultName.length > 0 ? (
-        <div className="geocode-query-result">
-          Experimental: <p>{queryResultName}</p>
-          {confidenceLevel}
-        </div>
-      ) : null}
+					<select
+						className="select-units"
+						id="geocode-selection-units"
+						value={units}
+						onChange={e => handleUnitChange(e.target.value)}
+					>
+						<option value="us">US</option>
+						<option value="si">Metric</option>
+					</select>
+				</div>
+			</div>
+			{queryResultName.length > 0 ? (
+				<div className="geocode-query-result">
+					Experimental: <p>{queryResultName}</p>
+					{confidenceLevel}
+				</div>
+			) : null}
 
-      <div className="location-buttons">
-        <button className="forecast-button" onClick={getReverseGeocode}>
-          Get Forecast
-        </button>
-      </div>
-    </>
-  );
+			<div className="location-buttons">
+				<button className="forecast-button">Get Forecast</button>
+			</div>
+		</form>
+	);
 };
 
 export default Geocode;
