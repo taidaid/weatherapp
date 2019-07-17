@@ -15,7 +15,6 @@
 .app-title {
   text-align: center;
   width: 50%;
-  z-index: 1;
 }
 
 .navbar-img {
@@ -47,5 +46,8 @@
 @media only screen and (max-width: 600px) {
   #img-cloud-sun {
     height: auto;
+  }
+  .app-title {
+    font-size: 1.5em;
   }
 }
