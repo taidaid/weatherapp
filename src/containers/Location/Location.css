@@ -72,6 +72,11 @@
   font-size: 0.75em;
 }
 
+.select-direction {
+  margin-top: 2px;
+  padding: 1px 0;
+}
+
 @media only screen and (max-width: 992px) {
   .location-section {
     flex-flow: column;

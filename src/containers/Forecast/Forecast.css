@@ -1,8 +1,12 @@
 .forecast {
   margin: 10px 0;
   padding: 5px 0;
-  width: 80vw;
+  width: 100%;
   box-shadow: 0 1px 5px black;
+}
+
+.forecast-section {
+  margin-top: 40px;
 }
 .section-title {
   min-width: 20%;
@@ -10,13 +14,26 @@
   padding-right: 10px;
 }
 
+.forecast-section-title-summary {
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  padding: 0 20px;
+}
+
 .summary {
   text-align: left;
+  margin-top: 0;
 }
 
 @media only screen and (max-width: 992px) {
   .forecast {
     box-shadow: 0 0 0;
-    width: 100vw;
+  }
+
+  .forecast-section-title-summary {
+    padding: 0 10px;
   }
 }

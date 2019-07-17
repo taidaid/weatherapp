@@ -3,8 +3,6 @@
   flex-flow: row;
   justify-content: center;
   flex-wrap: wrap;
-  align-items: center;
-  overflow: visible;
   max-width: 100%;
   margin-top: 20px;
   margin-bottom: 5px;
@@ -12,16 +10,7 @@
   box-shadow: 0 1px 5px black;
 }
 
-.currently-section-title {
-  display: flex;
-  flex-flow: row;
-  justify-content: flex-start;
-  align-items: center;
-  cursor: pointer;
-  padding: 0 20px;
-}
-
-.descriptor {
+.currently-descriptor {
   padding: 5px 10px;
   margin: 5px;
 }

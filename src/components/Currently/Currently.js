@@ -6,15 +6,15 @@ const Currently = ({ forecast, getIcon, units }) => {
   const [currentlyExpanded, setCurrentlyExpanded] = useState(false);
 
   return (
-    <div className="currently">
+    <div className="forecast-section">
       <div
-        className="currently-section-title"
+        className="forecast-section-title-summary"
         onClick={() => setCurrentlyExpanded(!currentlyExpanded)}
       >
         <h3 className="section-title">
           {currentlyExpanded ? "-" : "+"}Currently
         </h3>
-        {<div>{getIcon(forecast.icon)}</div>}
+        {getIcon(forecast.icon)}
         <h6 className="summary">{forecast.summary}</h6>
       </div>
 
@@ -23,7 +23,7 @@ const Currently = ({ forecast, getIcon, units }) => {
         style={{ overflow: "visible" }}
       >
         <div className="currently-description">
-          <div className="descriptor">
+          <div className="currently-descriptor">
             Temperature:{" "}
             {units === "us" ? (
               <>{Math.round(forecast.temperature)}°F</>
@@ -31,24 +31,24 @@ const Currently = ({ forecast, getIcon, units }) => {
               <>{Math.round(((forecast.temperature - 32) * 5) / 9)}°C</>
             )}
           </div>
-          <div className="descriptor">
+          <div className="currently-descriptor">
             Humidity: {Math.round(forecast.humidity * 100)}%
           </div>
-          <div className="descriptor">
+          <div className="currently-descriptor">
             Chance of Precipitation:{" "}
             {Math.round(forecast.precipProbability * 100)}%
           </div>
 
           {forecast.precipType ? (
-            <div className="descriptor">
+            <div className="currently-descriptor">
               Precipitation Type: {forecast.precipType}
             </div>
           ) : null}
 
-          <div className="descriptor">
+          <div className="currently-descriptor">
             Wind Direction: {forecast.windDirection}
           </div>
-          <div className="descriptor">
+          <div className="currently-descriptor">
             Wind Gust:{" "}
             {units === "us" ? (
               <>{Math.round(forecast.windGust)}mph</>
@@ -56,7 +56,7 @@ const Currently = ({ forecast, getIcon, units }) => {
               <>{Math.round(forecast.windGust * 0.44704)}mps</>
             )}
           </div>
-          <div className="descriptor">
+          <div className="currently-descriptor">
             Wind Speed:{" "}
             {units === "us" ? (
               <>{Math.round(forecast.windSpeed)}mph</>
