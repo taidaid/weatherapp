@@ -2,11 +2,9 @@
   display: flex;
   flex-flow: row;
   justify-content: space-between;
-  box-shadow: 0 1px 5px black;
   width: 100%;
   max-width: 100%;
   margin: 20px 0;
-  padding: 20px 0;
 }
 
 .location-container {
@@ -14,15 +12,20 @@
   flex-flow: column;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 10px 0;
   width: 33%;
 }
+
 #coords-container {
-  border-right: 1px solid black;
+  box-shadow: -1px -1px 5px 1px black;
+}
+
+#geocode-container {
+  box-shadow: 0 -1px 5px 1px black;
 }
 
 #local-container {
-  border-left: 1px solid black;
+  box-shadow: 0px -1px 5px 1px black;
 }
 
 .smooth-collapse {
@@ -80,22 +83,22 @@
 @media only screen and (max-width: 992px) {
   .location-section {
     flex-flow: column;
-    align-items: center;
-    width: 100vw;
+    padding: 20px 0;
   }
 
   .location-container {
-    width: 100%;
-    padding: 2vh 0;
+    width: auto;
   }
 
   #coords-container {
-    border-right: 0;
-    border-bottom: 1px black solid;
+    box-shadow: 0 0px 5px black;
+  }
+
+  #geocode-container {
+    box-shadow: 0 1px 5px black;
   }
 
   #local-container {
-    border-left: 0;
-    border-top: 1px black solid;
+    box-shadow: 0 2px 5px black;
   }
 }
