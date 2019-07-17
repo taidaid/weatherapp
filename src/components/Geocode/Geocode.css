@@ -1,0 +1,9 @@
+.geocode-input-fields {
+	min-width: 50%;
+}
+
+.geocode-location-input {
+	display: flex;
+	flex-flow: row;
+	align-items: center;
+}
