@@ -98,7 +98,8 @@ function App() {
   };
 
   //get the forecast local to the browser's location
-  const getLocalForecast = () => {
+  const getLocalForecast = e => {
+    e.preventDefault();
     getNavigatorCoords()
       .then(({ latitude, longitude }) => {
         setLatitude(latitude);
@@ -125,10 +126,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <Navbar />
-      </header>
-
+      <Navbar />
       <div className="App-body">
         <Location
           latitude={latitude}

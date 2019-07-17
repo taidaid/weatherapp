@@ -13,7 +13,7 @@ const Daily = ({ forecast, getIcon, units }) => {
         key={`${index}`}
         onClick={() => setDayExpanded(!dayExpanded)}
       >
-        <h4 className="date-time">{day.dateTime._d.toDateString()}</h4>
+        <h4 className="daily-date-time">{day.dateTime._d.toDateString()}</h4>
         {<>{getIcon(day.icon)}</>}
         <p className="day-summary">{day.summary}</p>
         <div className="day-stats">
@@ -55,20 +55,20 @@ const Daily = ({ forecast, getIcon, units }) => {
   };
 
   return (
-    <div className="daily">
+    <div className="forecast-section">
       <div
-        className="daily-section-title"
+        className="forecast-section-title-summary"
         onClick={() => setDailyExpanded(!dailyExpanded)}
       >
         <h3 className="section-title">{dailyExpanded ? "-" : "+"}Daily</h3>
-        {forecast.icon ? <div>{getIcon(forecast.icon)}</div> : null}
+        {forecast.icon ? getIcon(forecast.icon) : null}
         <h6 className="summary">
           {units === "us"
             ? forecast.summary
             : convertTempToMetric(forecast.summary)}
         </h6>
       </div>
-      <SmoothCollapse expanded={dailyExpanded} heightTransition={"1s ease"}>
+      <SmoothCollapse expanded={dailyExpanded} heightTransition={".8s ease"}>
         <div className="daily-forecasts">{dailyForecast}</div>
       </SmoothCollapse>
     </div>

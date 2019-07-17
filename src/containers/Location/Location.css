@@ -1,126 +1,101 @@
 .location-section {
-	display: flex;
-	flex-flow: row;
-	justify-content: space-between;
-	align-items: flex-start;
-	box-shadow: 0 1px 5px black;
-	max-width: 100%;
-	margin: 20px 0;
-	padding: 20px 40px;
-}
-
-.location-input-container {
-	display: flex;
-	flex-flow: column;
-	align-items: center;
-	width: 100%;
-	padding: 10px;
-}
-.location-label {
-	min-width: 50%;
-	text-align: right;
-}
-
-.location-input {
-	display: flex;
-	flex-flow: row;
-	min-width: 100%;
-	min-height: 60px;
-	align-items: center;
-	justify-content: center;
-}
-
-.input-fields {
-	display: flex;
-	flex-flow: row;
-	justify-content: flex-start;
-	align-items: center;
-	min-width: 50%;
-	min-height: 60px;
-}
-.location-input-field {
-	margin: 22px 5px 20px 5px;
-	width: calc(60px + 2vmin);
-}
-
-.select-direction {
-	width: calc(20px + 2vmin);
-}
-
-.select-units {
-	margin: 5px 0 0 10px;
-	width: calc(50px + 2vmin);
-}
-
-.location-section-title {
-	cursor: pointer;
-	font-size: 0.75em;
-}
-
-.location-buttons {
-	display: flex;
-	flex-flow: row;
-	justify-content: center;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  box-shadow: 0 1px 5px black;
+  width: 100%;
+  max-width: 100%;
+  margin: 20px 0;
+  padding: 20px 0;
 }
 
 .location-container {
-	display: flex;
-	flex-flow: column;
-	justify-content: center;
-	align-items: center;
-	max-width: 33%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  width: 33%;
+}
+#coords-container {
+  border-right: 1px solid black;
+}
+
+#local-container {
+  border-left: 1px solid black;
+}
+
+.smooth-collapse {
+  width: 100%;
+}
+
+.input-form {
+  display: flex;
+  flex-flow: column;
+}
+
+.location-input-container {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  padding: 20px 0;
+}
+
+.input-fields-container {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
+
+.location-label {
+  width: 50%;
+  text-align: right;
+}
+
+.input-fields {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
+
+.location-input-field {
+  margin: 22px 5px 20px 5px;
+  width: calc(60px + 2vmin);
+}
+
+.select-units {
+  margin: 5px 0 0 10px;
+}
+
+.location-section-title {
+  cursor: pointer;
+  font-size: 0.75em;
+}
+
+.select-direction {
+  margin-top: 2px;
+  padding: 1px 0;
 }
 
 @media only screen and (max-width: 992px) {
-	.location {
-		display: flex;
-		flex-flow: column;
-		margin-top: 20px;
-		padding: 10px 20px;
-		width: calc(100% - 80px);
-	}
+  .location-section {
+    flex-flow: column;
+    align-items: center;
+    width: 100vw;
+  }
 
-	.location-section {
-		flex-flow: column;
-		align-items: center;
-		min-width: 80%;
-	}
+  .location-container {
+    width: 100%;
+    padding: 2vh 0;
+  }
 
-	.smooth-collapse {
-		min-width: 100%;
-	}
-	.forecast-button {
-		margin: 20px 20px;
-	}
+  #coords-container {
+    border-right: 0;
+    border-bottom: 1px black solid;
+  }
 
-	.location-input {
-		justify-content: space-between;
-	}
-
-	.location-label {
-		min-width: 33%;
-	}
-	.select-direction {
-		min-width: 25%;
-		width: calc(30px + 2vmin);
-	}
-
-	.location-container {
-		min-width: 100%;
-		border-top: 1px black solid;
-		border-bottom: 1px black solid;
-	}
-
-	.input-fields {
-		min-width: 66%;
-	}
-
-	.location-input-field {
-		margin: 22px 5px 20px 5px;
-		width: calc(80px + 2vmin);
-	}
-
-	.select-units {
-		width: calc(60px + 2vmin);
-	}
+  #local-container {
+    border-left: 0;
+    border-top: 1px black solid;
+  }
 }

@@ -3,27 +3,49 @@
   left: 0;
   position: fixed;
   display: flex;
+  flex-flow: row;
   justify-content: space-between;
   height: 20vh;
   width: 100vw;
+  max-width: 100%;
   background-color: #262626;
   opacity: 0.95;
 }
 
+.app-title {
+  text-align: center;
+  width: 50%;
+  z-index: 1;
+}
+
 .navbar-img {
-  height: 20vh;
+  position: relative;
+  width: 25%;
+}
+
+.navbar-img img {
+  position: absolute;
+  height: 100%;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+#img-cloud-sun {
   left: 0;
 }
 
+#img-rainbow {
+  right: 0;
+}
+
 @media only screen and (max-width: 992px) {
-  .navbar {
-    font-size: calc(10px + 1vmin);
+  #img-rainbow {
+    height: auto;
   }
-  .rainbow-img {
-    display: block;
-    max-width: 230px;
-    max-height: 95px;
-    width: auto;
+}
+
+@media only screen and (max-width: 600px) {
+  #img-cloud-sun {
     height: auto;
   }
 }

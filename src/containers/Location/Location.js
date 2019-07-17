@@ -58,16 +58,14 @@ const Location = ({
         return <p>{"< 25 km"}</p>;
       case 1:
         return <p>{"> 25 km"}</p>;
-      case 0:
-        return <p>{"unknown distance"}</p>;
       default:
-        return null;
+        return <p>{"unknown distance"}</p>;
     }
   };
 
   return (
     <div className="location-section">
-      <div className="location-container">
+      <div className="location-container" id="coords-container">
         <h6
           className="location-section-title"
           onClick={() => setCoordsExpanded(!coordsExpanded)}
@@ -92,7 +90,7 @@ const Location = ({
           />
         </SmoothCollapse>
       </div>
-      <div className="location-container">
+      <div className="location-container" id="geocode-container">
         <h6
           className="location-section-title"
           onClick={() => setGeocodeExpanded(!geocodeExpanded)}
@@ -109,7 +107,7 @@ const Location = ({
           />
         </SmoothCollapse>
       </div>
-      <div className="location-container">
+      <div className="location-container" id="local-container">
         <h6
           className="location-section-title"
           onClick={() => setLocalExpanded(!localExpanded)}
@@ -117,9 +115,9 @@ const Location = ({
           {localExpanded ? "-" : "+"}Get Your Local Forecast
         </h6>
         <SmoothCollapse className="smooth-collapse" expanded={localExpanded}>
-          <>
+          <form className="input-form">
             <div className="location-input-container">
-              <div className="input-fields">
+              <div className="input-fields-container">
                 <label
                   className="location-label"
                   htmlFor="local-selecton-units"
@@ -138,10 +136,12 @@ const Location = ({
                 </select>
               </div>
             </div>
-            <button className="forecast-button" onClick={getLocalForecast}>
-              Use My Location
-            </button>
-          </>
+            <div className="location-buttons">
+              <button onClick={e => getLocalForecast(e)}>
+                Use My Location
+              </button>
+            </div>
+          </form>
         </SmoothCollapse>
       </div>
     </div>

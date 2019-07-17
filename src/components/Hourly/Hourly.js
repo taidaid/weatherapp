@@ -19,14 +19,12 @@ const Hourly = ({ forecast, getIcon, units }) => {
   const hourlyForecast = forecast.data.map((hour, index) => {
     return (
       <div className="hourly-description" key={`${index}`}>
-        <h4 className="date-time">{getHourFromUnixTime(hour.time)}</h4>
+        <h4 className="hourly-date-time">{getHourFromUnixTime(hour.time)}</h4>
 
         {<>{getIcon(hour.icon)}</>}
         <p className="hourly-summary">{hour.summary}</p>
         <div className="hourly-precip-chance">
-          <div className="day-precip-chance-text  ">
-            Rain: {Math.round(hour.precipProbability * 100)}%
-          </div>
+          Rain: {Math.round(hour.precipProbability * 100)}%
         </div>
 
         <p className="hourly-temp">
@@ -42,13 +40,13 @@ const Hourly = ({ forecast, getIcon, units }) => {
   });
 
   return (
-    <div className="hourly">
+    <div className="forecast-section">
       <div
-        className="hourly-section-title"
+        className="forecast-section-title-summary"
         onClick={() => setHourlyExpanded(!hourlyExpanded)}
       >
         <h3 className="section-title">{hourlyExpanded ? "-" : "+"}Hourly</h3>
-        {<div>{getIcon(forecast.icon)}</div>}
+        {getIcon(forecast.icon)}
         <h6 className="summary">{forecast.summary}</h6>
       </div>
 
