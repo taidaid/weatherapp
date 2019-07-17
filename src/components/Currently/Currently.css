@@ -4,15 +4,11 @@
   justify-content: center;
   flex-wrap: wrap;
   max-width: 100%;
-  margin-top: 20px;
-  margin-bottom: 5px;
   padding: 20px 40px;
-  box-shadow: 0 1px 5px black;
 }
 
 .currently-descriptor {
-  padding: 5px 10px;
-  margin: 5px;
+  padding: 20px;
 }
 
 @media only screen and (max-width: 992px) {

@@ -125,50 +125,53 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <Navbar />
-      <div className="App-body">
-        <Location
-          latitude={latitude}
-          longitude={longitude}
-          handleLatitudeChange={handleLatitudeChange}
-          handleLongitudeChange={handleLongitudeChange}
-          newLocationForecast={newLocationForecast}
-          getLocalForecast={getLocalForecast}
-          handleNorthSouthChange={handleNorthSouthChange}
-          handleEastWestChange={handleEastWestChange}
-          northSouth={northSouth}
-          eastWest={eastWest}
-          handleUnitChange={handleUnitChange}
-          getForecast={getForecast}
-          units={units}
-          apiKey={geocodeApiKey}
-        />
-
-        {/*Provides guidance before first use */}
-        {initialized ? null : (
-          <p>
-            Try entering some numbers for the latitude and longitude and
-            clicking 'Forecast', entering the name of a place, or you can click
-            'Use My Location' to get your local forecast.
-          </p>
-        )}
-        {/* Displays the forecast results for the given location or an error message
-         */}
-        {error ? (
-          <p>
-            There was an error getting your forecast. Try entering new info and
-            then clicking 'Forecast' or refreshing the page.
-          </p>
-        ) : (
-          <Forecast
-            forecast={forecast}
-            initialized={initialized}
+    <>
+      <div className="App">
+        <Navbar />
+        <div className="App-body">
+          <Location
+            latitude={latitude}
+            longitude={longitude}
+            handleLatitudeChange={handleLatitudeChange}
+            handleLongitudeChange={handleLongitudeChange}
+            newLocationForecast={newLocationForecast}
+            getLocalForecast={getLocalForecast}
+            handleNorthSouthChange={handleNorthSouthChange}
+            handleEastWestChange={handleEastWestChange}
+            northSouth={northSouth}
+            eastWest={eastWest}
+            handleUnitChange={handleUnitChange}
+            getForecast={getForecast}
             units={units}
+            apiKey={geocodeApiKey}
           />
-        )}
+
+          {/*Provides guidance before first use */}
+          {initialized ? null : (
+            <p>
+              Try entering some numbers for the latitude and longitude and
+              clicking 'Forecast', entering the name of a place, or you can
+              click 'Use My Location' to get your local forecast.
+            </p>
+          )}
+          {/* Displays the forecast results for the given location or an error message
+           */}
+          {error ? (
+            <p>
+              There was an error getting your forecast. Try entering new info
+              and then clicking 'Forecast' or refreshing the page.
+            </p>
+          ) : (
+            <Forecast
+              forecast={forecast}
+              initialized={initialized}
+              units={units}
+            />
+          )}
+        </div>
+        <footer className="footer">Bryan Windsor © 2019</footer>
       </div>
-    </div>
+    </>
   );
 }
 

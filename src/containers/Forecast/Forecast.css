@@ -2,11 +2,11 @@
   margin: 10px 0;
   padding: 5px 0;
   width: 100%;
-  box-shadow: 0 0px 5px 1px black;
 }
 
 .forecast-section {
   margin-top: 40px;
+  box-shadow: -1px -1px 5px 1px black;
 }
 .section-title {
   min-width: 20%;
@@ -29,11 +29,12 @@
 }
 
 @media only screen and (max-width: 992px) {
-  .forecast {
-    box-shadow: 0 0 0;
-  }
-
   .forecast-section-title-summary {
     padding: 0 10px;
+  }
+
+  .forecast-section {
+    margin: 0;
+    box-shadow: 0px 0px 5px 1px black;
   }
 }
