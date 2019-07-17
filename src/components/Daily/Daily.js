@@ -68,7 +68,7 @@ const Daily = ({ forecast, getIcon, units }) => {
             : convertTempToMetric(forecast.summary)}
         </h6>
       </div>
-      <SmoothCollapse expanded={dailyExpanded} heightTransition={"1s ease"}>
+      <SmoothCollapse expanded={dailyExpanded} heightTransition={".8s ease"}>
         <div className="daily-forecasts">{dailyForecast}</div>
       </SmoothCollapse>
     </div>

@@ -1,7 +1,7 @@
 .forecast {
   margin: 10px 0;
   padding: 5px 0;
-  max-width: 80vw;
+  width: 80vw;
   box-shadow: 0 1px 5px black;
 }
 .section-title {
@@ -17,5 +17,6 @@
 @media only screen and (max-width: 992px) {
   .forecast {
     box-shadow: 0 0 0;
+    width: 100vw;
   }
 }

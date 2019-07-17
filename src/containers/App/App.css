@@ -3,9 +3,8 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-
+  max-width: 100%;
   width: 100vw;
-  height: 70vh;
   padding-top: 20vh;
   padding-bottom: 10vh;
 }
@@ -52,11 +51,11 @@
     display: flex;
     flex-flow: column;
     align-items: center;
-    width: 100%;
+    width: 100vw;
   }
 
-  .App {
-    padding-right: 2%;
-    padding-left: 2%;
-  }
+  /* .App {
+    padding-right: 2vw;
+    padding-left: 2vw;
+  } */
 }
