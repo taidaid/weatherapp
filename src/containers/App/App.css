@@ -21,13 +21,13 @@
 
 .light-mode-button {
   transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
-  background-color: rgb(167, 167, 167);
+  background-color: rgb(197, 197, 197);
   color: black;
 }
 
 .light-mode-button:hover {
   transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
-  background-color: rgb(197, 197, 197);
+  background-color: rgb(214, 214, 214);
   color: black;
 }
 

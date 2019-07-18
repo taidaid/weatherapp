@@ -1,8 +1,4 @@
-.navbar {
-  background-color: #262626;
-}
-
-#navbar {
+#navbar-light {
   top: 0;
   left: 0;
   position: fixed;
@@ -12,6 +8,25 @@
   height: 20vh;
   width: 100vw;
   max-width: 100%;
+  transition: background-color 1s ease-in-out, color 02s ease-in-out;
+  background-color: rgb(231, 231, 231);
+  color: black;
+  opacity: 0.95;
+}
+
+#navbar-dark {
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  height: 20vh;
+  width: 100vw;
+  max-width: 100%;
+  transition: background-color 1s ease-in-out, color 02s ease-in-out;
+  background-color: #181818;
+  color: white;
   opacity: 0.95;
 }
 

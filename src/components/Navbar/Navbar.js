@@ -5,7 +5,7 @@ import "./Navbar.css";
 
 const Navbar = ({ lightMode }) => {
   return (
-    <header id="navbar">
+    <header id={`${lightMode ? "navbar-light" : "navbar-dark"}`}>
       <div className="navbar-img ">
         <img
           className={` ${lightMode ? "invert" : ""}`}
