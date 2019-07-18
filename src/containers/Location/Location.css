@@ -70,9 +70,11 @@
   padding: 1px 0;
 }
 
-.location-buttons {
+.location-buttons-dark {
   cursor: pointer;
   font-size: 0.8em;
+  transition: background-color 0.5s ease;
+  background-color: rgb(61, 61, 61);
   border: 1px solid black;
   border-radius: 6px;
   padding: 5px;
@@ -80,9 +82,26 @@
   width: 33%;
 }
 
-.location-buttons:hover {
+.location-buttons-dark:hover {
   transition: background-color 0.5s ease;
-  background-color: rgb(61, 61, 61);
+  background-color: rgb(41, 41, 41);
+}
+
+.location-buttons-light {
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+  font-size: 0.8em;
+  background-color: rgb(167, 167, 167);
+  border: 1px solid black;
+  border-radius: 6px;
+  padding: 5px;
+  box-shadow: -1px -1px 2px 2px black;
+  width: 33%;
+}
+
+.location-buttons-light:hover {
+  transition: background-color 0.5s ease;
+  background-color: rgb(197, 197, 197);
 }
 
 @media only screen and (max-width: 992px) {

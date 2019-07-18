@@ -126,16 +126,17 @@ function App() {
   };
 
   return (
-    <div className={`${lightMode ? `light-mode` : ``}`}>
-      <div className={`App ${lightMode ? `light-mode` : ``}`}>
+    <div className={`${lightMode ? `light-mode` : `dark-mode`}`}>
+      <div className={`App ${lightMode ? `light-mode` : `dark-mode`}`}>
         <Navbar
-          className={`navbar ${lightMode ? `light-mode` : ``}`}
+          className={`navbar ${lightMode ? `light-mode` : `dark-mode`}`}
           lightMode={lightMode}
         />
         <div className="App-body">
           <div
-            className="dark-light-button"
-            id={`${lightMode ? `light-mode` : ``}`}
+            className={`dark-light-button ${
+              lightMode ? `light-mode-button` : `dark-mode-button`
+            }`}
             onClick={() => setLightMode(!lightMode)}
           >
             {lightMode ? "Dark" : "Light"} Mode
@@ -155,6 +156,7 @@ function App() {
             getForecast={getForecast}
             units={units}
             apiKey={geocodeApiKey}
+            lightMode={lightMode}
           />
 
           {/*Provides guidance before first use */}

@@ -14,13 +14,6 @@
   color: white;
 }
 
-@media screen and (prefers-color-scheme: light) {
-  body {
-    background-color: white;
-    color: black;
-  }
-}
-
 /* changes app to Light Mode, white background, black text*/
 .light-mode {
   transition: background-color 2s ease-in-out;
@@ -29,11 +22,36 @@
   color: black;
 }
 
-#light-mode {
+.light-mode-button {
+  transition: background-color 0.5s ease-in-out;
+  background-color: rgb(167, 167, 167);
+  color: black;
+}
+
+.light-mode-button:hover {
+  transition: background-color 0.5s ease-in-out;
+  background-color: rgb(197, 197, 197);
+  color: black;
+}
+
+/* changes app to Dark Mode, dark background, white text*/
+.dark-mode {
   transition: background-color 2s ease-in-out;
   transition: color 01s ease-in-out;
-  background-color: rgb(231, 231, 231);
-  color: black;
+  background-color: #181818;
+  color: white;
+}
+
+.dark-mode-button {
+  transition: background-color 0.5s ease-in-out;
+  background-color: rgb(61, 61, 61);
+  color: white;
+}
+
+.dark-mode-button:hover {
+  transition: background-color 0.5s ease-in-out;
+  background-color: rgb(41, 41, 41);
+  color: white;
 }
 
 /*for inverting image colors*/
@@ -47,8 +65,6 @@
   border: 1px solid black;
   border-radius: 6px;
   font-size: 0.8em;
-  background-color: #424242;
-  transition: background-color 0.5s ease;
   padding: 5px;
   cursor: pointer;
   right: 10px;
@@ -92,10 +108,16 @@
   .App {
     padding-top: 15vh;
   }
+
   .App-body {
     display: flex;
     flex-flow: column;
     align-items: center;
     width: 100%;
+  }
+
+  .dark-light-button {
+    right: 10px;
+    top: 15vh;
   }
 }
