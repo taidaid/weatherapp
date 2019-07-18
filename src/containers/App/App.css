@@ -8,48 +8,44 @@
   padding-top: 20vh;
   padding-bottom: 10vh;
   min-height: 70vh;
-  transition: background-color 01s ease-in-out;
-  transition: color 01s ease-in-out;
   background-color: #181818;
   color: white;
 }
 
 /* changes app to Light Mode, white background, black text*/
 .light-mode {
-  transition: background-color 2s ease-in-out;
-  transition: color 01s ease-in-out;
+  transition: background-color 1s ease-in-out, color 02s ease-in-out;
   background-color: rgb(231, 231, 231);
   color: black;
 }
 
 .light-mode-button {
-  transition: background-color 0.5s ease-in-out;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
   background-color: rgb(167, 167, 167);
   color: black;
 }
 
 .light-mode-button:hover {
-  transition: background-color 0.5s ease-in-out;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
   background-color: rgb(197, 197, 197);
   color: black;
 }
 
 /* changes app to Dark Mode, dark background, white text*/
 .dark-mode {
-  transition: background-color 2s ease-in-out;
-  transition: color 01s ease-in-out;
+  transition: background-color 1s ease-in-out, color 02s ease-in-out;
   background-color: #181818;
   color: white;
 }
 
 .dark-mode-button {
-  transition: background-color 0.5s ease-in-out;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
   background-color: rgb(61, 61, 61);
   color: white;
 }
 
 .dark-mode-button:hover {
-  transition: background-color 0.5s ease-in-out;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
   background-color: rgb(41, 41, 41);
   color: white;
 }
