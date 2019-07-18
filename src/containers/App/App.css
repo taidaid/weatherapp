@@ -8,6 +8,51 @@
   padding-top: 20vh;
   padding-bottom: 10vh;
   min-height: 70vh;
+  transition: background-color 01s ease-in-out;
+  transition: color 01s ease-in-out;
+  background-color: #181818;
+  color: white;
+}
+
+@media screen and (prefers-color-scheme: light) {
+  body {
+    background-color: white;
+    color: black;
+  }
+}
+
+/* changes app to Light Mode, white background, black text*/
+.light-mode {
+  transition: background-color 2s ease-in-out;
+  transition: color 01s ease-in-out;
+  background-color: rgb(231, 231, 231);
+  color: black;
+}
+
+#light-mode {
+  transition: background-color 2s ease-in-out;
+  transition: color 01s ease-in-out;
+  background-color: rgb(231, 231, 231);
+  color: black;
+}
+
+/*for inverting image colors*/
+.invert {
+  filter: invert(1);
+}
+
+.dark-light-button {
+  position: fixed;
+  box-shadow: -2px -2px 5px 1px black;
+  border: 1px solid black;
+  border-radius: 6px;
+  font-size: 0.8em;
+  background-color: #424242;
+  transition: background-color 0.5s ease;
+  padding: 5px;
+  cursor: pointer;
+  right: 10px;
+  top: 35vh;
 }
 
 .App-body {

@@ -136,10 +136,11 @@ const Location = ({
                 </select>
               </div>
             </div>
-            <div className="location-buttons">
-              <button onClick={e => getLocalForecast(e)}>
-                Use My Location
-              </button>
+            <div
+              className="location-buttons"
+              onClick={e => getLocalForecast(e)}
+            >
+              Use My Location
             </div>
           </form>
         </SmoothCollapse>

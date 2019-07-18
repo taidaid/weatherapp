@@ -15,6 +15,7 @@ function App() {
   const [forecast, setForecast] = useState({});
   const [error, setError] = useState(false);
   const [initialized, setInitialized] = useState(false);
+  const [lightMode, setLightMode] = useState(false);
 
   //initialize opencage-api and darky-sky-api with apikeys
   //ordinarily these api keys would be hidden via a proxy, but as this is a demo for a front-end team, a back-end was out-of-scope
@@ -125,10 +126,20 @@ function App() {
   };
 
   return (
-    <>
-      <div className="App">
-        <Navbar />
+    <div className={`${lightMode ? `light-mode` : ``}`}>
+      <div className={`App ${lightMode ? `light-mode` : ``}`}>
+        <Navbar
+          className={`navbar ${lightMode ? `light-mode` : ``}`}
+          lightMode={lightMode}
+        />
         <div className="App-body">
+          <div
+            className="dark-light-button"
+            id={`${lightMode ? `light-mode` : ``}`}
+            onClick={() => setLightMode(!lightMode)}
+          >
+            {lightMode ? "Dark" : "Light"} Mode
+          </div>
           <Location
             latitude={latitude}
             longitude={longitude}
@@ -166,12 +177,13 @@ function App() {
               forecast={forecast}
               initialized={initialized}
               units={units}
+              lightMode={lightMode}
             />
           )}
         </div>
         <footer className="footer">Bryan Windsor © 2019</footer>
       </div>
-    </>
+    </div>
   );
 }
 

@@ -86,8 +86,10 @@ const Geocode = ({
         </div>
       ) : null}
 
-      <div className="location-buttons">
-        <button type="submit">Forecast</button>
+      <div className="location-buttons" onClick={e => getReverseGeocode(e)}>
+        <div className="forecast-button" type="submit">
+          Forecast
+        </div>
       </div>
     </form>
   );
