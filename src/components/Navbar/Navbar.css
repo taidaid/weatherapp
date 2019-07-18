@@ -8,8 +8,8 @@
   height: 20vh;
   width: 100vw;
   max-width: 100%;
-  transition: background-color 1s ease-in-out, color 02s ease-in-out;
-  background-color: rgb(231, 231, 231);
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+  background-color: rgb(235, 235, 235);
   color: black;
   opacity: 0.95;
 }
@@ -24,7 +24,7 @@
   height: 20vh;
   width: 100vw;
   max-width: 100%;
-  transition: background-color 1s ease-in-out, color 02s ease-in-out;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
   background-color: #181818;
   color: white;
   opacity: 0.95;

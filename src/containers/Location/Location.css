@@ -92,18 +92,18 @@
   cursor: pointer;
   transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
   font-size: 0.8em;
-  background-color: rgb(197, 197, 197);
-  color: black;
+  background-color: #009bca;
+  color: white;
   border: 1px solid black;
   border-radius: 6px;
   padding: 5px;
-  box-shadow: -1px -1px 2px 2px black;
+  /* box-shadow: -1px -1px 2px 2px black; */
   width: 33%;
 }
 
 .location-buttons-light:hover {
   transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
-  background-color: rgb(214, 214, 214);
+  background-color: #00b5ec;
 }
 
 @media only screen and (max-width: 992px) {
