@@ -16,6 +16,7 @@ const Coords = ({
   newLocationForecast,
   apiKey,
   getConfidenceLevel,
+  lightMode,
 }) => {
   const [queryResultName, setQueryResultName] = useState("");
   const [confidenceLevel, setConfidenceLevel] = useState("");
@@ -146,8 +147,15 @@ const Coords = ({
           {confidenceLevel}
         </div>
       ) : null}
-      <div className="location-buttons">
-        <button type="submit">Forecast</button>
+      <div
+        className={
+          lightMode ? "location-buttons-light" : "location-buttons-dark"
+        }
+        onClick={e => getForwardGeocode(e)}
+      >
+        <div className="forecast-button" type="submit">
+          Forecast
+        </div>
       </div>
     </form>
   );

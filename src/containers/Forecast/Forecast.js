@@ -15,32 +15,78 @@ import cloudHail from "../../assets/Cloud-Hail.svg";
 
 import "./Forecast.css";
 
-const Forecast = ({ forecast, initialized, units }) => {
+const Forecast = ({ forecast, initialized, units, lightMode }) => {
   //get the correct image according to the give icon input from the forecast
   const getIcon = icon => {
     switch (icon) {
       case "rain":
-        return <img src={rain} alt="rain" />;
+        return (
+          <img className={lightMode ? "invert" : ""} src={rain} alt="rain" />
+        );
       case "partly-cloudy-day":
-        return <img src={cloudSun} alt="cloud-sun" />;
+        return (
+          <img
+            className={lightMode ? "invert" : ""}
+            src={cloudSun}
+            alt="cloud-sun"
+          />
+        );
       case "clear-day":
-        return <img src={sun} alt="clear-day" />;
+        return (
+          <img
+            className={lightMode ? "invert" : ""}
+            src={sun}
+            alt="clear-day"
+          />
+        );
       case "clear-night":
-        return <img src={moon} alt="clear-night" />;
+        return (
+          <img
+            className={lightMode ? "invert" : ""}
+            src={moon}
+            alt="clear-night"
+          />
+        );
       case "snow":
-        return <img src={snow} alt="snow" />;
+        return (
+          <img className={lightMode ? "invert" : ""} src={snow} alt="snow" />
+        );
       case "wind":
-        return <img src={wind} alt="wind" />;
+        return (
+          <img className={lightMode ? "invert" : ""} src={wind} alt="wind" />
+        );
       case "fog":
-        return <img src={fog} alt="fog" />;
+        return (
+          <img className={lightMode ? "invert" : ""} src={fog} alt="fog" />
+        );
       case "cloudy":
-        return <img src={cloud} alt="cloud" />;
+        return (
+          <img className={lightMode ? "invert" : ""} src={cloud} alt="cloud" />
+        );
       case "partly-cloudy-night":
-        return <img src={cloudMoon} alt="partly-cloudy-night" />;
+        return (
+          <img
+            className={lightMode ? "invert" : ""}
+            src={cloudMoon}
+            alt="partly-cloudy-night"
+          />
+        );
       case "sleet":
-        return <img src={cloudHail} alt="sleet" />;
+        return (
+          <img
+            className={lightMode ? "invert" : ""}
+            src={cloudHail}
+            alt="sleet"
+          />
+        );
       default:
-        return <img src={cloudSun} alt="cloud-sun" />;
+        return (
+          <img
+            className={lightMode ? "invert" : ""}
+            src={cloudSun}
+            alt="cloud-sun"
+          />
+        );
     }
   };
   //check for empty object or falsey value

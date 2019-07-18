@@ -24,6 +24,7 @@
 .input-form {
   display: flex;
   flex-flow: column;
+  align-items: center;
 }
 
 .location-input-container {
@@ -67,6 +68,42 @@
 .select-direction {
   margin-top: 2px;
   padding: 1px 0;
+}
+
+.location-buttons-dark {
+  cursor: pointer;
+  font-size: 0.8em;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+  background-color: rgb(61, 61, 61);
+  color: white;
+  border: 1px solid black;
+  border-radius: 6px;
+  padding: 5px;
+  box-shadow: -1px -1px 2px 2px black;
+  width: 33%;
+}
+
+.location-buttons-dark:hover {
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+  background-color: rgb(41, 41, 41);
+}
+
+.location-buttons-light {
+  cursor: pointer;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+  font-size: 0.8em;
+  background-color: #009bca;
+  color: white;
+  border: 1px solid black;
+  border-radius: 6px;
+  padding: 5px;
+  /* box-shadow: -1px -1px 2px 2px black; */
+  width: 33%;
+}
+
+.location-buttons-light:hover {
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+  background-color: #00b5ec;
 }
 
 @media only screen and (max-width: 992px) {

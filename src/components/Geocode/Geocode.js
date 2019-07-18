@@ -8,6 +8,7 @@ const Geocode = ({
   units,
   handleUnitChange,
   getConfidenceLevel,
+  lightMode,
 }) => {
   const [locationQuery, setLocationQuery] = useState("");
   const [queryResultName, setQueryResultName] = useState("");
@@ -86,8 +87,15 @@ const Geocode = ({
         </div>
       ) : null}
 
-      <div className="location-buttons">
-        <button type="submit">Forecast</button>
+      <div
+        className={
+          lightMode ? "location-buttons-light" : "location-buttons-dark"
+        }
+        onClick={e => getReverseGeocode(e)}
+      >
+        <div className="forecast-button" type="submit">
+          Forecast
+        </div>
       </div>
     </form>
   );

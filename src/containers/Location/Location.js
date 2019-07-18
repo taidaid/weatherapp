@@ -19,6 +19,7 @@ const Location = ({
   units,
   apiKey,
   getForecast,
+  lightMode,
 }) => {
   const [geocodeExpanded, setGeocodeExpanded] = useState(true);
   const [coordsExpanded, setCoordsExpanded] = useState(false);
@@ -87,6 +88,7 @@ const Location = ({
             newLocationForecast={newLocationForecast}
             apiKey={apiKey}
             getConfidenceLevel={getConfidenceLevel}
+            lightMode={lightMode}
           />
         </SmoothCollapse>
       </div>
@@ -104,6 +106,7 @@ const Location = ({
             units={units}
             handleUnitChange={handleUnitChange}
             getConfidenceLevel={getConfidenceLevel}
+            lightMode={lightMode}
           />
         </SmoothCollapse>
       </div>
@@ -136,10 +139,13 @@ const Location = ({
                 </select>
               </div>
             </div>
-            <div className="location-buttons">
-              <button onClick={e => getLocalForecast(e)}>
-                Use My Location
-              </button>
+            <div
+              className={
+                lightMode ? "location-buttons-light" : "location-buttons-dark"
+              }
+              onClick={e => getLocalForecast(e)}
+            >
+              Use My Location
             </div>
           </form>
         </SmoothCollapse>
