@@ -131,7 +131,6 @@ const Chart = ({ forecast, getHourFromUnixTime, units }) => {
       <Line
         data={() => formatChart(forecast)}
         options={{ maintainAspectRatio: false }}
-        width={100}
         height={500}
       />
     </div>
