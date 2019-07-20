@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Daily.css";
 import SmoothCollapse from "react-smooth-collapse";
+import Chart from "../Chart/Chart";
 
 const Daily = ({ forecast, getIcon, units }) => {
   const [dailyExpanded, setDailyExpanded] = useState(false);
@@ -70,6 +71,7 @@ const Daily = ({ forecast, getIcon, units }) => {
       </div>
       <SmoothCollapse expanded={dailyExpanded} heightTransition={".8s ease"}>
         <div className="daily-forecasts">{dailyForecast}</div>
+        <Chart forecast={forecast} units={units} />
       </SmoothCollapse>
     </div>
   );

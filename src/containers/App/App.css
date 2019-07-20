@@ -15,7 +15,7 @@
 /* changes app to Light Mode, white background, black text*/
 .light-mode {
   transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
-  background-color: rgb(235, 235, 235);
+  background-color: rgb(255, 255, 255);
   color: black;
 }
 
