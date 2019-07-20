@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Hourly.css";
 import SmoothCollapse from "react-smooth-collapse";
+import Chart from "../Chart/Chart";
 
 const Hourly = ({ forecast, getIcon, units }) => {
   const [hourlyExpanded, setHourlyExpanded] = useState(false);
@@ -52,6 +53,11 @@ const Hourly = ({ forecast, getIcon, units }) => {
 
       <SmoothCollapse expanded={hourlyExpanded}>
         <div className="hourly-forecasts">{hourlyForecast}</div>
+        <Chart
+          forecast={forecast}
+          getHourFromUnixTime={getHourFromUnixTime}
+          units={units}
+        />
       </SmoothCollapse>
     </div>
   );
