@@ -119,26 +119,6 @@ const Location = ({
         </h6>
         <SmoothCollapse className="smooth-collapse" expanded={localExpanded}>
           <form className="input-form">
-            <div className="location-input-container">
-              <div className="input-fields-container">
-                <label
-                  className="location-label"
-                  htmlFor="local-selecton-units"
-                >
-                  units:{" "}
-                </label>
-
-                <select
-                  className="select-units"
-                  id="local-selecton-units"
-                  value={units}
-                  onChange={e => handleUnitChange(e.target.value)}
-                >
-                  <option value="us">US</option>
-                  <option value="si">Metric</option>
-                </select>
-              </div>
-            </div>
             <div
               className={
                 lightMode ? "location-buttons-light" : "location-buttons-dark"

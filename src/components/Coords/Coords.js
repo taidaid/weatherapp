@@ -126,20 +126,6 @@ const Coords = ({
             </select>
           </div>
         </div>
-        <div className="input-fields-container">
-          <label className="location-label" htmlFor="coords-selecton-units">
-            units:{" "}
-          </label>
-          <select
-            className="select-units"
-            id="coords-selecton-units"
-            value={units}
-            onChange={e => handleUnitChange(e.target.value)}
-          >
-            <option value="si">Metric</option>
-            <option value="us">US</option>
-          </select>
-        </div>
       </div>
       {queryResultName.length > 0 ? (
         <div className="geocode-query-result">

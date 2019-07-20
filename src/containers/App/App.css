@@ -7,7 +7,7 @@
   width: 100vw;
   padding-top: 20vh;
   padding-bottom: 10vh;
-  min-height: 70vh;
+  min-height: 75vh;
   background-color: #181818;
   color: white;
 }
@@ -53,18 +53,6 @@
 /*for inverting image colors*/
 .invert {
   filter: invert(1);
-}
-
-.dark-light-button {
-  position: fixed;
-  box-shadow: -2px -2px 5px 1px black;
-  border: 1px solid black;
-  border-radius: 6px;
-  font-size: 0.8em;
-  padding: 5px;
-  cursor: pointer;
-  right: 10px;
-  top: 35vh;
 }
 
 .App-body {

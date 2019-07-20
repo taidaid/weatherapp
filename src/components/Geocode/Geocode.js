@@ -64,21 +64,6 @@ const Geocode = ({
             />
           </div>
         </div>
-        <div className="input-fields-container">
-          <label className="location-label" htmlFor="geocode-selection-units">
-            units:{" "}
-          </label>
-
-          <select
-            className="select-units"
-            id="geocode-selection-units"
-            value={units}
-            onChange={e => handleUnitChange(e.target.value)}
-          >
-            <option value="us">US</option>
-            <option value="si">Metric</option>
-          </select>
-        </div>
       </div>
       {queryResultName.length > 0 ? (
         <div className="geocode-query-result">

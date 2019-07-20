@@ -98,8 +98,18 @@ const Forecast = ({ forecast, initialized, units, lightMode }) => {
           getIcon={getIcon}
           units={units}
         />
-        <Hourly forecast={forecast.hourly} getIcon={getIcon} units={units} />
-        <Daily forecast={forecast.daily} getIcon={getIcon} units={units} />
+        <Hourly
+          forecast={forecast.hourly}
+          getIcon={getIcon}
+          units={units}
+          lightMode={lightMode}
+        />
+        <Daily
+          forecast={forecast.daily}
+          getIcon={getIcon}
+          units={units}
+          lightMode={lightMode}
+        />
       </div>
     );
   } else if (initialized) {

@@ -131,6 +131,11 @@ const Chart = ({ forecast, getHourFromUnixTime, units }) => {
       <Line
         data={() => formatChart(forecast)}
         options={{ maintainAspectRatio: false }}
+        legend={{
+          labels: {
+            fontColor: "rgb(172, 172, 172)",
+          },
+        }}
         height={500}
       />
     </div>

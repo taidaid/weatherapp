@@ -1,0 +1,9 @@
+.dark-light-button {
+  box-shadow: -2px -2px 5px 1px black;
+  border: 1px solid black;
+  border-radius: 6px;
+  font-size: 0.8em;
+  padding: 5px;
+  margin: 20px 0;
+  cursor: pointer;
+}

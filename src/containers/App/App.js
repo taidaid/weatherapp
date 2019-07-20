@@ -5,6 +5,7 @@ import "./App.css";
 import Forecast from "../Forecast/Forecast";
 import Navbar from "../../components/Navbar/Navbar";
 import Location from "../Location/Location";
+import Sidebar from "../Sidebar/Sidebar";
 
 function App() {
   const [latitude, setLatitude] = useState(40.7128);
@@ -126,65 +127,61 @@ function App() {
   };
 
   return (
-    <div className={`${lightMode ? `light-mode` : `dark-mode`}`}>
-      <div className={`App ${lightMode ? `light-mode` : `dark-mode`}`}>
-        <Navbar
-          className={`navbar ${lightMode ? `light-mode` : `dark-mode`}`}
+    <div className={`App ${lightMode ? `light-mode` : `dark-mode`}`}>
+      <Navbar
+        className={`navbar ${lightMode ? `light-mode` : `dark-mode`}`}
+        lightMode={lightMode}
+      />
+      <div className="App-body">
+        <Sidebar
+          lightMode={lightMode}
+          setLightMode={setLightMode}
+          units={units}
+          handleUnitChange={handleUnitChange}
+        />
+        <Location
+          latitude={latitude}
+          longitude={longitude}
+          handleLatitudeChange={handleLatitudeChange}
+          handleLongitudeChange={handleLongitudeChange}
+          newLocationForecast={newLocationForecast}
+          getLocalForecast={getLocalForecast}
+          handleNorthSouthChange={handleNorthSouthChange}
+          handleEastWestChange={handleEastWestChange}
+          northSouth={northSouth}
+          eastWest={eastWest}
+          handleUnitChange={handleUnitChange}
+          getForecast={getForecast}
+          units={units}
+          apiKey={geocodeApiKey}
           lightMode={lightMode}
         />
-        <div className="App-body">
-          <div
-            className={`dark-light-button ${
-              lightMode ? `light-mode-button` : `dark-mode-button`
-            }`}
-            onClick={() => setLightMode(!lightMode)}
-          >
-            {lightMode ? "Dark" : "Light"} Mode
-          </div>
-          <Location
-            latitude={latitude}
-            longitude={longitude}
-            handleLatitudeChange={handleLatitudeChange}
-            handleLongitudeChange={handleLongitudeChange}
-            newLocationForecast={newLocationForecast}
-            getLocalForecast={getLocalForecast}
-            handleNorthSouthChange={handleNorthSouthChange}
-            handleEastWestChange={handleEastWestChange}
-            northSouth={northSouth}
-            eastWest={eastWest}
-            handleUnitChange={handleUnitChange}
-            getForecast={getForecast}
+
+        {/*Provides guidance before first use */}
+        {initialized ? null : (
+          <p>
+            Try entering some numbers for the latitude and longitude and
+            clicking 'Forecast', entering the name of a place, or you can click
+            'Use My Location' to get your local forecast.
+          </p>
+        )}
+        {/* Displays the forecast results for the given location or an error message
+         */}
+        {error ? (
+          <p>
+            There was an error getting your forecast. Try entering new info and
+            then clicking 'Forecast' or refreshing the page.
+          </p>
+        ) : (
+          <Forecast
+            forecast={forecast}
+            initialized={initialized}
             units={units}
-            apiKey={geocodeApiKey}
             lightMode={lightMode}
           />
-
-          {/*Provides guidance before first use */}
-          {initialized ? null : (
-            <p>
-              Try entering some numbers for the latitude and longitude and
-              clicking 'Forecast', entering the name of a place, or you can
-              click 'Use My Location' to get your local forecast.
-            </p>
-          )}
-          {/* Displays the forecast results for the given location or an error message
-           */}
-          {error ? (
-            <p>
-              There was an error getting your forecast. Try entering new info
-              and then clicking 'Forecast' or refreshing the page.
-            </p>
-          ) : (
-            <Forecast
-              forecast={forecast}
-              initialized={initialized}
-              units={units}
-              lightMode={lightMode}
-            />
-          )}
-        </div>
-        <footer className="footer">Bryan Windsor © 2019</footer>
+        )}
       </div>
+      <footer className="footer">Bryan Windsor © 2019</footer>
     </div>
   );
 }
