@@ -16,8 +16,8 @@ const Sidebar = ({ lightMode, setLightMode, units, handleUnitChange }) => {
       top: "0",
       left: "0",
       zIndex: "99",
-      height: `${sidebarExpanded ? "100vh" : "3vh"}`,
-      width: `${sidebarExpanded ? "15vw" : "3vw"}`,
+      height: `${sidebarExpanded ? "100vh" : "4vh"}`,
+      width: `${sidebarExpanded ? "10vw" : "4vw"}`,
       minWidth: "40px",
       boxShadow: "2px 0px 3px 3px black",
       transition: "width 0.5s ease-out, height 0.5s ease-out",
@@ -32,16 +32,20 @@ const Sidebar = ({ lightMode, setLightMode, units, handleUnitChange }) => {
         onClick={() => setSidebarExpanded(!sidebarExpanded)}
       />
 
-      {sidebarExpanded ? (
-        <>
-          <div
-            className={`dark-light-button ${
-              lightMode ? `light-mode-button` : `dark-mode-button`
-            }`}
-            onClick={() => setLightMode(!lightMode)}
-          >
-            {lightMode ? "Dark" : "Light"} Mode
-          </div>
+      <div className={sidebarExpanded ? "show" : "hide"}>
+        <div
+          className={`dark-light-button ${
+            lightMode ? `light-mode-button` : `dark-mode-button`
+          }`}
+          onClick={() => setLightMode(!lightMode)}
+        >
+          {lightMode ? "Dark" : "Light"} Mode
+        </div>
+        <div
+          className={`dark-light-button ${
+            lightMode ? `light-mode-button` : `dark-mode-button`
+          }`}
+        >
           <label /*className="location-label"*/ htmlFor="local-selecton-units">
             units:{" "}
           </label>
@@ -55,8 +59,8 @@ const Sidebar = ({ lightMode, setLightMode, units, handleUnitChange }) => {
             <option value="us">US</option>
             <option value="si">Metric</option>
           </select>
-        </>
-      ) : null}
+        </div>
+      </div>
     </aside>
   );
 };

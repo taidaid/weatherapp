@@ -7,3 +7,15 @@
   margin: 20px 0;
   cursor: pointer;
 }
+
+.show {
+  transition: opacity 1.5s ease-out;
+  visibility: visible;
+  opacity: 1;
+}
+
+.hide {
+  transition: opacity 1.5s ease-out;
+  visibility: hidden;
+  opacity: 0;
+}
