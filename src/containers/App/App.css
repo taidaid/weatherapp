@@ -14,9 +14,9 @@
 
 /* changes app to Light Mode, white background, black text*/
 .light-mode {
-  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
-  background-color: rgb(255, 255, 255);
-  color: black;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out !important;
+  background-color: rgb(255, 255, 255) !important;
+  color: black !important;
 }
 
 .light-mode-button {
@@ -33,6 +33,12 @@
 
 /* changes app to Dark Mode, dark background, white text*/
 .dark-mode {
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+  background-color: #181818;
+  color: white;
+}
+
+#dark-mode {
   transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
   background-color: #181818;
   color: white;

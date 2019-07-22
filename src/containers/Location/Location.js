@@ -66,7 +66,10 @@ const Location = ({
 
   return (
     <div className="location-section">
-      <div className="location-container" id="coords-container">
+      <div
+        className={` ${lightMode ? "light-mode" : ""} location-container`}
+        id="coords-container"
+      >
         <h6
           className="location-section-title"
           onClick={() => setCoordsExpanded(!coordsExpanded)}
@@ -92,7 +95,10 @@ const Location = ({
           />
         </SmoothCollapse>
       </div>
-      <div className="location-container" id="geocode-container">
+      <div
+        className={` ${lightMode ? "light-mode" : ""} location-container`}
+        id="geocode-container"
+      >
         <h6
           className="location-section-title"
           onClick={() => setGeocodeExpanded(!geocodeExpanded)}
@@ -110,7 +116,10 @@ const Location = ({
           />
         </SmoothCollapse>
       </div>
-      <div className="location-container" id="local-container">
+      <div
+        className={` ${lightMode ? "light-mode" : ""} location-container`}
+        id="local-container"
+      >
         <h6
           className="location-section-title"
           onClick={() => setLocalExpanded(!localExpanded)}
